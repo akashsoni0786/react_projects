@@ -37,7 +37,7 @@
   }
 }
 .rows{
-  width: 600px;
+  width: 590px;
   display: flex;
   justify-content: space-between;
 }
@@ -49,6 +49,11 @@
   font-size: 25px;
 
 }
+.rowsbtn{
+  width: 590px;
+  display: flex;
+  justify-content: space-around;
+}
 .inputsbtn{
   cursor: pointer;
   padding: 20px;
@@ -56,16 +61,26 @@
   border: 1px solid aqua;
   border-radius: 10px;
   font-size: 25px;
+  width: 200px;
 
 }
 .rows span{ 
   padding-top: 25px;
   color:  rgb(8, 70, 141);
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
 }
 .calcu{
   background-color: rgb(78, 139, 209);
   padding: 50px;
   border-radius: 20px;
+}
+.inputstime{
+  margin-left: 20px;
+  width: 95px;
+  padding: 20px;
+  margin-right: 10px;
+  border: 1px solid aqua;
+  border-radius: 10px;
+  font-size: 25px;
 }
