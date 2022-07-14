@@ -10,7 +10,6 @@ import OperatingHour from "./OperatingHour";
 import Reviews from "./Reviews";
 import Login from "./Login";
 import Signup from "./Signup";
-// import
 
 var data = require("./test.json");
 export default class App extends Component {
@@ -47,34 +46,36 @@ export default class App extends Component {
     // altitude={this.fetchLocationName(i.latlng.lat,i.latlng.lng)}
   };
   inputSemail = (e) => {
-
     this.setState({
       emS: e.target.value,
     });
   };
-  inputSpass =(e)=>{
+  inputSpass = (e) => {
     this.setState({
       psS: e.target.value,
     });
-  }
-  inputSconpass =(e)=>{
+  };
+  inputSconpass = (e) => {
     this.setState({
       cps: e.target.value,
     });
-  }
-  signbtn =()=>{
-    if(this.state.emS != ''){
-      if(this.state.cps === this.state.psS){
-
-      }
-      else if(this.state.cps === this.state.psS){
-        alert("Passwords are not same!!");
-      }
-    }
-    else{
+  };
+  signbtn = () => {
+    if (this.state.emS === "") {
       alert("All fields are mendatory");
+    } else if (this.state.psS === "") {
+      alert("All fields are mendatory");
+    } else if (this.state.cps === this.state.psS) {
+      var eml= this.state.emS;
+      var psw = this.state.psS;
+      this.setState({
+        user : {}
+      })
+      console.log(this.state.user)
+    } else if (this.state.cps !== this.state.psS) {
+      alert("Passwords are not same!!");
     }
-  }
+  };
   valus = () => {
     console.log(data.restaurants);
   };
@@ -182,7 +183,15 @@ export default class App extends Component {
       }
     } else {
       if (this.state.signupornot === 0) {
-        return <Signup gotologinpage={this.loginswap} email = {this.inputSemail} password={this.inputSpass} confpass={this.inputSconpass} signupbtn={this.signbtn}/>;
+        return (
+          <Signup
+            gotologinpage={this.loginswap}
+            email={this.inputSemail}
+            password={this.inputSpass}
+            confpass={this.inputSconpass}
+            signupbtn={this.signbtn}
+          />
+        );
       } else if (this.state.signupornot === 1) {
         return <Login gotosignuppage={this.signupswap} />;
       }
