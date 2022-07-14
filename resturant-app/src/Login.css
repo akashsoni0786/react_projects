@@ -1,0 +1,69 @@
+.loginback{
+    background-image: url("https://images.unsplash.com/photo-1626777552795-3a5e3f6ee7ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=885&q=80");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logincontainer{
+    align-items: center;
+    padding: 50px;
+    width: 500px;
+    border-radius: 20px;
+    /* background-color: red; */
+    backdrop-filter: blur(20px);
+    /* box-shadow: 10px 15px 15px rgba(129, 124, 124, 0.2); */
+    padding: 50px;
+}
+.tablelogin{
+    border: none;
+}
+
+.tablelogin td{
+    border: none;
+
+}
+.tablelogin th{
+    font-size: 20px;
+    border: none;
+    padding-right: 40px;
+}
+.inps{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(189, 186, 186);
+    
+}
+.loginbtn{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(100px);
+    box-shadow: 100px 150px 150px black;
+    margin: 20px;
+    width: 200px;
+}
+.loginbtn:hover{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: gray;
+    backdrop-filter: blur(100px);
+    box-shadow: 100px 150px 150px black;
+    margin: 20px;
+    color: red;
+    width: 200px;
+    cursor: pointer;
+}
+.pagename{
+    text-align: center;
+}
+.clickme:hover{
+    cursor: pointer;
+    color: red;
+}

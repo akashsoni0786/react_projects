@@ -1,0 +1,84 @@
+.App {
+  text-align: center;
+}
+
+.resparent{
+  cursor: pointer;
+  /* margin: 10%; */
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  display: flex;
+  background-color: aqua;
+  border-radius: 10px;
+  box-shadow: 50px 50px 50px black;
+}
+.resparent:hover{
+  cursor: pointer;
+  margin: 1%;
+  display: flex;
+  background-color: aqua;
+  border-radius: 10px;
+  box-shadow: 50px 50px 50px black;
+}
+.nameadd{
+  font-size: 90%;
+  margin: 6%;
+  display: column;
+}
+.resimg{
+  max-width: 30%;
+  min-width: 30%;
+  max-height: 20%;
+  min-height: 20%;
+  border-radius: 10px;
+  margin: 6%;
+}
+.Navbar{
+
+  background-color: aqua;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.resname{
+  font-size: 40px;
+  margin-left: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.logout{
+  font-size: 15px;
+  margin: 15px;
+  font-weight: bold;
+  padding: 15px;
+  background-color: red;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
+.logout:hover{
+  font-size: 15px;
+  margin:15px;
+  font-weight: bold;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: red;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
+.searchbar{
+  font-size: 20px;
+  border-radius: 10px;
+  height: 40px;
+  width: 80%;
+  padding: 10px;
+}
+.searchbarparent{
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}

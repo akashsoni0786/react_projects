@@ -1,0 +1,35 @@
+.pageimg{
+    width: 100%;
+
+}
+table{
+    margin-right: 10%;
+    margin-left: 10%;
+    align-items: center;
+    border-collapse: collapse;
+}
+th, td {
+    width: 1000px;
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+.reviewbox{
+    text-align: start;
+    margin: 10px;
+    padding: 10px;
+    background-color: aqua;
+    border:0 solid black;
+    border-radius: 10px;
+    color: black;
+}
+.reviewhead{
+    text-align: start;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.mainhead{
+    margin: 20px;
+    font-size: 50px;
+    font-weight: bolder;
+}

@@ -166,7 +166,7 @@ export default class App extends Component {
 
 export const Details = (props) => {
   return (
-    <div>
+    <div >
       <h3>Details</h3>
       <div className="rows">
         <span>Monthly EMI : </span>
