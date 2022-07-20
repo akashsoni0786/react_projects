@@ -1,5 +1,4 @@
 .loginback{
-    background-image: url("https://images.unsplash.com/photo-1626777552795-3a5e3f6ee7ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=885&q=80");
     background-repeat: no-repeat;
     height: 100vh;
     background-position: center;
@@ -7,16 +6,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background:linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0)), url("https://images.unsplash.com/photo-1555992457-b8fefdd09069?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
 }
 .logincontainer{
     align-items: center;
-    padding: 50px;
-    width: 500px;
-    border-radius: 20px;
-    /* background-color: red; */
-    backdrop-filter: blur(20px);
-    /* box-shadow: 10px 15px 15px rgba(129, 124, 124, 0.2); */
-    padding: 50px;
+    padding: 3vw;
+    width: 50vw;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    /* padding: 50px; */
 }
 .tablelogin{
     border: none;
@@ -26,44 +24,44 @@
     border: none;
 
 }
+
 .tablelogin th{
-    font-size: 20px;
+    font-size: 2vw;
     border: none;
-    padding-right: 40px;
+    padding-right: 4vw;
 }
 .inps{
+    font-size: 2vw;
+    padding: 10px;
+    /* background-color: rgb(0, 0, 0); */
+}
+.inps:hover{
     font-size: 20px;
     padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(189, 186, 186);
-    
+    border: 1px solid #ff214f;
+    color: #ff214f
 }
 .loginbtn{
-    font-size: 20px;
+    font-size: 2vw;
+    color: white;
     padding: 10px;
-    border-radius: 10px;
-    background-color: transparent;
-    backdrop-filter: blur(100px);
-    box-shadow: 100px 150px 150px black;
+    background-color: #ff214f;
     margin: 20px;
-    width: 200px;
+    width: 20vw;
 }
 .loginbtn:hover{
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: gray;
-    backdrop-filter: blur(100px);
-    box-shadow: 100px 150px 150px black;
+    font-size: 2vw;
     margin: 20px;
-    color: red;
-    width: 200px;
+    background-color: #eb0b37;
+    width: 20vw;
     cursor: pointer;
 }
 .pagename{
     text-align: center;
+    color: #ff214f;
+    font-size: 4vw;
 }
 .clickme:hover{
     cursor: pointer;
-    color: red;
+    color: #eb0b37;
 }
