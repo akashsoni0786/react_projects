@@ -6,12 +6,13 @@ import UpperNavTwo from './UpperNavTwo';
 
 function App() {
   return (
-   <>
+   <div className='amazon'>
+
    <UpperNav />
-   <UpperNavTwo />
+   {/* <UpperNavTwo /> */}
    <HomePage />
 
-   </>
+   </div>
   );
 }
 

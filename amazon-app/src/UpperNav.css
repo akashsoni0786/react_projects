@@ -1,12 +1,16 @@
+.bothnav{
+  width: 100%;
+}
 .navparent
 {
+  /* min-width:1250px;
+  max-width: 1250px; */
+  width: 100%;
   padding: 2px 15px;
   height: 50px;
   background-color: #0f1111;
   display: flex;
   justify-content: space-between;
-  /* flex-direction: row; */
-  /* vertical-align: middle; */
 }
 .logoimg{
   margin: 10px 0px;
@@ -99,6 +103,9 @@ font-size: 15px;
 }
 .secondnav{
   width: 100%;
+  /* padding: 2px 15px; */
+  /* min-width:1250px;
+  max-width: 1250px; */
   height: 40px;
   color: white;
   background-color: #233040;

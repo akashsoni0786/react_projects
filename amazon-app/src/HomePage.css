@@ -1,0 +1,38 @@
+.carousel img{
+    width: 100%;
+}
+.allproductsdiv{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 30px 30px;
+}
+.productdiv{
+    padding: 20px;
+    box-shadow: 20px 20px 20px black;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.offername{
+
+   font-size: 20px;
+   font-weight: bolder;
+   margin: 10px 0px;
+    
+}
+.productdiv p{
+    width: max-content;
+    color: brown;
+    cursor: pointer;
+}
+.productdiv p:hover{
+    width: max-content;
+    color: goldenrod;
+    cursor: pointer;
+}
+.imgsoffer{
+    width: 150px;
+    height: 150px;
+}

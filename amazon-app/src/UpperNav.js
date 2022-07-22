@@ -3,6 +3,7 @@ import "./UpperNav.css";
 export class UpperNav extends Component {
   render() {
     return (
+      <div className="bothnav">
       <div className="navparent">
         <img
           className="logoimg"
@@ -57,6 +58,24 @@ export class UpperNav extends Component {
         <i class="fa fa-shopping-cart"><span>2</span></i>
         </div>
       </div>
+
+<div className='secondnav'>
+<div className='liftlist'>
+    <ul>
+        <li><i class="fas fa-bars">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All</i></li>
+        <li>Best&nbsp;Seller</li>
+        <li>Mobiles</li>
+        <li>Customer&nbsp;Service</li>
+        <li>Today's&nbsp;Deal</li>
+        <li>Books</li>
+        <li>Electronics</li>
+        <li>Fashion</li>
+    </ul>
+</div>
+<div className='divright'>
+    <img alt='' src='https://images-eu.ssl-images-amazon.com/images/G/31/prime/PD22/LU/IN-PD-22-GW-SWM_400x39._CB634187897_.jpg' />
+</div>
+</div></div>
     );
   }
 }
