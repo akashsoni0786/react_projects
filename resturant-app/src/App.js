@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "./test.json";
 import React, { Component } from "react";

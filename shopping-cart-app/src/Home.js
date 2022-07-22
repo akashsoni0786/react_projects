@@ -3,27 +3,8 @@ import './App.css';
 import { products } from './Data';
 import ProductCard from './ProductCard';
 export class Home extends Component {
- state = {
-  cartvalues :[]
-}
 
-  addtocartfunc=(e)=>{
-    
-    console.log(this.state.cartvalues)
-    let cartarray;
-    products.map(i=>{
-      if(i.id === e.target.id){
-        var k ={id:i.id,name:i.name,price:i.price,pic:i.pic,quan:1};
-         cartarray = [...this.state.cartvalues,k];
-      }
-    })
-    this.setState({
-      cartvalues:cartarray
-    })
-    this.props.sendtocartpage(cartarray)
-  }
   render() {
-    {console.log(this.state.cartvalues)}
     return (
       <>
        <div className='advertisment'>
@@ -31,7 +12,7 @@ export class Home extends Component {
            <p>Sale 20% Off</p>
            <p>On Everything</p>
            {/* <div>Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.</div> */}
-           <button disabled>Shop Now</button>
+           <p >Shop Now</p>
          </div>
        </div>
        <div className='whyshopwithus'>
@@ -63,14 +44,14 @@ export class Home extends Component {
            <p>#NewArrives</p>
            <p>#NewLook</p>
            <p>#NewCharm</p>
-           <button disabled>Shop Now</button>
+           <p disabled>Shop Now</p>
          </div>
        </div>
        <div className='ourproducts'>
        <p className='headourpro'><span>Our</span>&nbsp;<span>products</span></p>
       <div className='allcardsofproducts'>
       {products.map(i=>{
-        return <ProductCard ids={i.id} name={i.name} price={i.price} pic={i.pic} adtocart={this.addtocartfunc}/>
+        return <ProductCard ids={i.id} name={i.name} price={i.price} pic={i.pic} adtocart={this.props.addtocartfunc}/>
       })}
       </div>
       

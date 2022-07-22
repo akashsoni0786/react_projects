@@ -1,48 +1,75 @@
 import "./App.css";
 import Home from "./Home";
 import Nav from "./Nav";
-
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./Cart";
 import Contact from "./Contact";
-
+import { products } from "./Data";
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      cartarrfirse: [],
+      cartvalues: [],
+      additem: 0,
       emptycartar: [],
+   
     };
   }
-  cartarea = (val) => {
-    this.setState({
-      cartarrfirse: val,
+  addtocart = (e) => {
+    let cartarray;
+    products.map((i) => {
+      if (i.id === e.target.id) {
+        var k = {
+          id: i.id,
+          name: i.name,
+          price: i.price,
+          pic: i.pic,
+          quan: 1,
+        };
+        var d=-1
+        this.state.cartvalues.forEach(a=>{
+          d=d+1;
+          if(a.id == k.id){
+            k = {
+              id: i.id,
+              name: i.name,
+              price: i.price,
+              pic: i.pic,
+              quan: Number(a.quan)+1,
+            };
+            this.state.cartvalues.splice(d,1)
+            this.setState({
+              cartarray: this.state.cartvalues
+            })
+          }
+        })
+        console.log(cartarray)
+        cartarray = [...this.state.cartvalues, k];
+        this.setState({
+          cartvalues: cartarray,
+        });
+      }
     });
-  };
+
+  }
+
   emptycartarea = (v) => {
     this.setState({
-      cartarrfirse: []
+      cartvalues: [],
     });
   };
   render() {
     return (
       <>
-        <Nav />
+        <Nav cartcount={this.state.cartvalues.length}/>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                sendtocartpage={this.cartarea}
-              />
-            }
-          />
+          <Route path="/" element={<Home addtocartfunc={this.addtocart} />} />
           <Route
             path="/cart"
             element={
               <Cart
-                sendingToCart={this.state.cartarrfirse}
+                sendingToCart={this.state.cartvalues}
                 emptyToCart={this.emptycartarea}
               />
             }
