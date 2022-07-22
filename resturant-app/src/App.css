@@ -35,21 +35,25 @@
   margin: 6%;
 }
 .Navbar{
-
-  background-color: aqua;
+  margin-top: -10px;
+  margin-bottom: 100px;
+  background-color: transparent;
   text-align: center;
   display: flex;
   justify-content: space-between;
 }
 .resname{
-  font-size: 40px;
-  margin-left: 20px;
+  cursor: pointer;
+  font-size: 3vw;
+  color: white;
+  margin: 10px 40px;
   font-weight: bold;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 }
 .logout{
+  cursor: pointer;
   font-size: 15px;
   margin: 15px;
   font-weight: bold;
@@ -78,7 +82,30 @@
   padding: 10px;
 }
 .searchbarparent{
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png");
+}
+.searchbarparent input{
+  margin: 1% 10% ;
+  border: none;
+}
+.zomatologo{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+.searchbarparent p{
+  color: white;
+text-align: center;  
+font-size: 5vw;
+}
+.zomatologo img{
+  width: 35vw;
 }

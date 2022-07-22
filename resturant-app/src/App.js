@@ -20,7 +20,7 @@ export default class App extends Component {
       searchval: "",
       home: 0,
       selectedpageid: "",
-      login: 0,
+      login: 1,
       signupornot: 0,
       emS: "",
       psS: "",
@@ -124,7 +124,7 @@ export default class App extends Component {
       if (this.state.home === 0) {
         return (
           <span>
-            <NavBar />
+       
             <SearchBar findit={this.searchrestaurent} />
             {this.state.restaurant.map((i) => (
               <Restaurant
@@ -146,7 +146,7 @@ export default class App extends Component {
           if (this.state.selectedpageid === i.id) {
             return (
               <>
-                <NavBar />
+          
                 <EveryRestaurant
                   id={i.id}
                   img={i.photograph}
