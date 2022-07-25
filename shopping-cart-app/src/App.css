@@ -300,3 +300,10 @@
   font-size: 10px;
 }
 
+.deleteit{
+  cursor: pointer;
+}
+.deleteit:hover{
+  color: #f7444e;
+  cursor: pointer;
+}

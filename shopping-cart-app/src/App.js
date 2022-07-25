@@ -59,6 +59,21 @@ export class App extends Component {
       cartvalues: [],
     });
   };
+
+  delete=(e)=>{
+    var pid = e.target.id;
+    let l=-1;
+    this.state.cartvalues.map(i=>{
+      l=l+1;
+      if(i.id == pid){
+        this.state.cartvalues.splice(l,1)
+        this.setState({
+          cartvalues:this.state.cartvalues
+        })
+      }
+    })
+
+  }
   render() {
     return (
       <>
@@ -71,6 +86,7 @@ export class App extends Component {
               <Cart
                 sendingToCart={this.state.cartvalues}
                 emptyToCart={this.emptycartarea}
+                deletethis={this.delete}
               />
             }
           />

@@ -31,6 +31,7 @@ export class Cart extends Component {
     });
   };
   minusquan = (e) => {
+
     if (parseInt(e.target.nextElementSibling.textContent) == 1) {
       alert("Quantity can't be zero");
     } else {
@@ -72,7 +73,7 @@ export class Cart extends Component {
       this.props.emptyToCart();
     }
   }
-
+ 
   render() {
     return (
       <div className="maincartpage">
@@ -97,6 +98,9 @@ export class Cart extends Component {
                   <th>
                     <u>Total Price</u>
                   </th>
+                  <th>
+                    <u>Delete </u>
+                  </th>
                 </tr>
                 {this.props.sendingToCart.map((i) => {
                   return (
@@ -113,6 +117,7 @@ export class Cart extends Component {
                         </button>
                       </td>
                       <td>{i.quan * parseFloat(i.price)}</td>
+                      <td><u className="deleteit" id={i.id} onClick={this.props.deletethis}>Delete</u></td>
                     </tr>
                   );
                 })}
