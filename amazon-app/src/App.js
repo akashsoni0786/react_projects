@@ -1,4 +1,5 @@
 import './App.css';
+import DrawerAppBar from './Header1';
 import HomePage from './HomePage';
 import Signin from './Signin';
 import UpperNav from './UpperNav';
@@ -8,10 +9,10 @@ function App() {
   return (
    <div className='amazon'>
 
-   <UpperNav />
+   {/* <UpperNav /> */}
    {/* <UpperNavTwo /> */}
-   <HomePage />
-
+   {/* <HomePage /> */}
+<DrawerAppBar />
    </div>
   );
 }

@@ -102,7 +102,7 @@ export class Cart extends Component {
                   return (
                     <tr>
                       <td>{i.name}</td>
-                      <td>${i.price}</td>
+                      <td>{i.price}</td>
                       <td>
                         <button onClick={this.minusquan} id={i.id}>
                           -
@@ -112,7 +112,7 @@ export class Cart extends Component {
                           +
                         </button>
                       </td>
-                      <td>${i.quan * parseFloat(i.price)}</td>
+                      <td>{i.quan * parseFloat(i.price)}</td>
                     </tr>
                   );
                 })}
