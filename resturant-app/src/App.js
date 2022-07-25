@@ -126,6 +126,7 @@ export default class App extends Component {
           <span>
        
             <SearchBar findit={this.searchrestaurent} />
+            <div className="allrest">
             {this.state.restaurant.map((i) => (
               <Restaurant
                 id={i.id}
@@ -139,6 +140,8 @@ export default class App extends Component {
                 }}
               />
             ))}
+            </div>
+            
           </span>
         );
       } else if (this.state.home === 1) {

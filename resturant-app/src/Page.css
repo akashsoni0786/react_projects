@@ -1,6 +1,29 @@
+.mainpage {
+    text-align: center;
+    color: azure;
+    position: relative;
+
+
+  }
+.backbtn{
+    position:absolute;
+    top: 3;
+    left: 3;
+}
+.backbtn img {
+    width: 30px;
+    cursor: pointer;
+}
 .pageimg{
     width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 
+}
+.offermarq{
+    color: rgba(255, 20, 71, 0.986);
+    font-size: 25px;
+    font-weight: bolder;
 }
 table{
     margin-right: 10%;
@@ -17,10 +40,10 @@ th, td {
     text-align: start;
     margin: 10px;
     padding: 10px;
-    background-color: aqua;
+    background-color: black;
     border:0 solid black;
     border-radius: 10px;
-    color: black;
+    color: white;
 }
 .reviewhead{
     text-align: start;
@@ -29,6 +52,7 @@ th, td {
     font-weight: bolder;
 }
 .mainhead{
+    
     margin: 20px;
     font-size: 50px;
     font-weight: bolder;

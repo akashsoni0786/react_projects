@@ -28,10 +28,7 @@
   /* position: fixed;
   width: 100%; */
 }
-.nav p{
-  font-size: 25px;
-  font-weight: bolder;
-}
+
 .nav ul{
   display: flex;
   font-size: 15px;
