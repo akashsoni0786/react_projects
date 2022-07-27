@@ -19,11 +19,11 @@
 
 
 .nav{
+ position: sticky;
   background-color: #282c34;
   display: flex;
-  /* align-items: center; */
   justify-content: space-between;
-  padding: 0rem 0rem;
+  padding: 0rem 2rem;
   color: white;
 }
 
@@ -200,10 +200,12 @@
   flex-wrap: wrap;
 }
 .productcard{
+  position: relative;
   border-radius: 2px;
   background-color: #d8d8d7;
   padding: 10px;
   width: 150px;
+  height: 300px;
   align-items: center;
   margin: 20px 10px;
 
@@ -219,6 +221,8 @@
   font-weight: 400;
 }
 .addtocartbtn{
+  position:absolute;
+  bottom: 10px;
   border-radius:5px ;
   color: black;
   background: linear-gradient(#F7DEA1, #F0C14D);

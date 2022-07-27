@@ -77,23 +77,44 @@ const App = () => {
       }
     });
   };
-
+  const logout =()=>{
+    if(login == 0)
+    {
+      navigate("/signin");
+    }
+    else{
+      if(window.confirm("Do you really want to logout ?"))
+      {
+        navigate("/");
+        setUsername('');
+        setLogin(0);
+      }
+      else
+      {
+        navigate("/");
+      }
+      
+    }
+    
+  }
   const billit = ()=>{
     if(login == 1){
-      alert("Done")
+      alert("Order is placed!");
+      setCartvalues([]);
+      alert("Thanking you for shopping with us")
+
     }
     else{
       navigate("/signin");
     }
   }
 
-  const loggedin = () => {};
   return (
     <>
-      <Nav cartcount={cartvalues.length} />
+      <Nav cartcount={cartvalues.length} user={username} loginstatus={logout}/>
       <Routes>
         <Route path="/" element={<Home addtocartfunc={addtocart} 
-        user={username} />} />
+         />} />
         <Route
           path="/cart"
           element={
@@ -105,7 +126,8 @@ const App = () => {
             />
           }
         />
-        <Route path="/signin" element={<Signin loginbtn={loggedin} />} />
+        <Route path="/signin" element={<Signin
+         />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </>

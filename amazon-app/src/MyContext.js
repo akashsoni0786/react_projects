@@ -4,7 +4,7 @@ export const ContextName = React.createContext();
 export const ContextFuncName = (props) => {
 
   const [login,setLogin] = useState(0);
-  const [username,setUsername]=useState("Login");
+  const [username,setUsername]=useState("");
   const [cartvalues,setCartvalues]=useState([]);
   const [additem,setAdditem]=useState(0);
   const [emptycartar,setEmptycartar]=useState([]);
