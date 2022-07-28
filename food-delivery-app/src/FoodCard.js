@@ -19,13 +19,13 @@ export default function MediaControlCard(props) {
     border:"1px solid black",borderRadius:"10px",flexDirection:"row",justifyContent:"space-between",boxShadow:"0px 0px 5px 5px black"}}>
       <Box sx={{ display: 'flex', flexDirection: 'column',width:"50%" }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="p" style={{marginLeft:"0",fontSize:"25px",fontWeight:"bold"}}>
+          <Typography component="div" variant="p" style={{fontSize:"25px",fontWeight:"bold"}}>
             {props.nameoffood}
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 ,marginLeft:"-20px"}}>
-         Category : Veg <img style={{width:"18px",margin:"0px 10px"}} alt='' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/1200px-Indian-vegetarian-mark.svg.png'/>
+          <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+         Veg <img style={{width:"18px"}} alt='' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/1200px-Indian-vegetarian-mark.svg.png'/>
         </Box>
-          <Typography variant="subtitle1" color="text.secondary" component="div" style={{marginLeft:"-140px"}}>
+          <Typography variant="subtitle1" color="text.secondary" component="div" >
             Price : ${props.price} 
           </Typography>
         </CardContent>

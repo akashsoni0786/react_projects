@@ -1,121 +1,3 @@
-// import * as React from "react";
-// import PropTypes from "prop-types";
-// import { Global } from "@emotion/react";
-// import { styled } from "@mui/material/styles";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import { grey } from "@mui/material/colors";
-// import Button from "@mui/material/Button";
-// import Box from "@mui/material/Box";
-// import Skeleton from "@mui/material/Skeleton";
-// import Typography from "@mui/material/Typography";
-// import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-// import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
-// import { Icon } from "@mui/material";
-// const drawerBleeding = 56;
-
-// const Root = styled("div")(({ theme }) => ({
-//   height: "100%",
-//   backgroundColor:
-//     theme.palette.mode === "light"
-//       ? grey[100]
-//       : theme.palette.background.default,
-// }));
-
-// const StyledBox = styled(Box)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "light" ? "#fff" : grey[800],
-// }));
-
-// function SwipeableEdgeDrawer(props) {
-
-//   const { window } = props;
-//   const [open, setOpen] = React.useState(false);
-
-//   const toggleDrawer = (newOpen) => () => {
-//     setOpen(newOpen);
-//   };
-
-//   // This is used only for the example
-//   const container =
-//     window !== undefined ? () => window().document.body : undefined;
-
-//   return (
-//     <Root>
-//         <Box sx={{ textAlign: "center",position:"absolute" ,top:'0vh'}}>
-//           <Button onClick={toggleDrawer(true)}>Open</Button>
-//         </Box>
-//       <CssBaseline />
-//       <Global
-//         styles={{
-//           ".MuiDrawer-root > .MuiPaper-root": {
-//             height: `calc(50% - ${drawerBleeding}px)`,
-//             overflow: "visible",
-//           },
-//         }}
-//       />
-
-//         <SwipeableDrawer
-//           sx={{ backgroundColor: "transparent" }}
-//           container={container}
-//           anchor="bottom"
-//           open={open}
-//           onClose={toggleDrawer(false)}
-//           onOpen={toggleDrawer(true)}
-//           swipeAreaWidth={drawerBleeding}
-//           disableSwipeToOpen={false}
-//           ModalProps={{
-//             keepMounted: true,
-//           }}
-//         >
-//           <StyledBox
-//             sx={{
-//               position: "absolute",
-//               top: -drawerBleeding,
-//               borderTopLeftRadius: 8,
-//               borderTopRightRadius: 8,
-//               visibility: "visible",
-//               right: 0,
-//               left: 0,
-//             }}
-//           >
-//             <div style={{display:"flex",justifyContent:"space-around",marginBottom:"1000px",zIndex:"1"}}>
-//             <Typography sx={{ p: 2, color: "text.secondary" }}>
-//               Total:$600
-//             </Typography>
-//             <Typography sx={{ p: 2, color: "text.secondary" }}>
-//               Total:$600
-//             </Typography>
-//             <Button onClick={()=>{alert()}}
-//             sx={{backgroundColor:"#ba000d",cursor:"pointer"}}
-//                 variant="contained">Continue</Button>
-//             </div>
-
-//           </StyledBox>
-//           <StyledBox
-//             sx={{
-//               px: 2,
-//               pb: 2,
-//               height: "100%",
-//               overflow: "auto",
-//             }}
-//           >
-//             <Skeleton variant="rectangular" height="100%" />
-//           </StyledBox>
-//         </SwipeableDrawer>
-
-//     </Root>
-//   );
-// }
-
-// SwipeableEdgeDrawer.propTypes = {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * You won't need it on your project.
-//    */
-//   window: PropTypes.func,
-// };
-
-// export default SwipeableEdgeDrawer;
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -130,70 +12,168 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import { Button, Divider, Drawer, IconButton, ListItemButton, ListItemIcon, Typography } from "@mui/material";
-
+import {
+  Button,
+  Divider,
+  Drawer,
+  IconButton,
+  ListItemButton,
+  ListItemIcon,
+  Typography,
+} from "@mui/material";
+// import * as React from 'react';
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+// import Paper from '@mui/material/Paper';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
-export default function FixedBottomNavigation() {
-    const [state, setState] = React.useState(false);
-    
-      const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-          return;
-        }
-        setState({ ...state, [anchor]: open });
-      };
+export default function FixedBottomNavigation(props) {
+  const [state, setState] = React.useState(false);
+  const [total, setTotal] = React.useState(0);
 
+  const sum = props.cartarray.reduce((twopara, twopara2) => {
+    return twopara + Number(twopara2.price) * Number(twopara2.quan);
+  }, 0);
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
 
   return (
     <>
-<div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
+      <div>
+        {["left", "right", "top", "bottom"].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {props.cartarray.length == 0? <h1>Your cart is empty</h1> :<TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell align="right">Category</TableCell>
+                      <TableCell align="right">Price&nbsp;(₹)</TableCell>
+                      <TableCell align="right">Quantity</TableCell>
+                      <TableCell align="right">Total&nbsp;Price </TableCell>
+                      <TableCell align="right">Remove</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {props.cartarray.map((row) => (
+                      <TableRow
+                        key={row.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 }
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.name}</TableCell>
+                        <TableCell align="right">{row.price}</TableCell>
+                        <TableCell align="right">{row.quan}</TableCell>
+                        <TableCell align="right">
+                          {Number(row.quan) * Number(row.price)}
+                        </TableCell>
+                        <p hidden={true}>
+                          {() => {
+                            let t = Number(row.quan) * Number(row.price);
+                            setTotal(total + t);
+                          }}
+                        </p>
+                        <TableCell align="right">
+                          <IconButton aria-label="delete" size="small">
+                            <img
+                              id={row.id}
+                              onClick={props.deleteFood}
+                              alt=""
+                              src="download.png"
+                              style={{ width: "20px" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>}
+              
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
+      <Box sx={{ pb: 7 }}>
+        <Paper
+          sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+          elevation={3}
+        >
+          <BottomNavigation
+            style={{ display: "flex", justifyContent: "space-around" }}
           >
-            bottom
-          </Drawer>
-        </React.Fragment>
-      ))}
-    </div>
-    <Box sx={{ pb: 7 }}>
-      <Paper
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-        elevation={3}
-      >
-        <BottomNavigation style={{display:'flex',justifyContent:"space-around"}}>
-          <BottomNavigationAction
-            label="Recents"
-            icon={
-              <IconButton onClick={toggleDrawer("bottom", true)} aria-label="delete" size="small">
-                <KeyboardDoubleArrowUpIcon fontSize="50px" />
-              </IconButton>
-            }
-          />
+            <BottomNavigationAction
+              label="Recents"
+              icon={
+                <IconButton
+                  onClick={toggleDrawer("bottom", true)}
+                  aria-label="delete"
+                  size="small"
+                >
+                  <KeyboardDoubleArrowUpIcon fontSize="50px" />
+                </IconButton>
+              }
+            />
 
-          <BottomNavigationAction
-            label="Recents"
-            icon={<Typography>Your Orders(2)</Typography>}
-          />
-          <BottomNavigationAction
-            label="Favorites"
-            icon={<Typography>Total : $500</Typography>}
-          />
-          <BottomNavigationAction
-            label="Archive"
-            icon={
-              <Button variant="contained" sx={{ backgroundColor: "#b71c1c" }}>
-                Continue
-              </Button>
-            }
-          />
-        </BottomNavigation>
-      </Paper>
-    </Box>
+            <BottomNavigationAction
+              label="Recents"
+              icon={
+                <Typography sx={{fontSize:"1.5vw"}}>Your Orders({props.cartarray.length})</Typography>
+              }
+            />
+            <BottomNavigationAction
+              label="Favorites"
+              icon={<Typography sx={{fontSize:"2vw"}}>Total : ₹{sum}</Typography>}
+            />
+            <BottomNavigationAction
+              label="Archive"
+              icon={
+                <Button
+                  onClick={props.emptyit}
+                  variant="contained"
+                  sx={{ backgroundColor: "#b71c1c",fontSize:"1.2vw" }}
+                >
+                  Empty Cart
+                </Button>
+              }
+            />
+
+            <BottomNavigationAction
+              label="Archive"
+              icon={
+                <Button
+                  onClick={props.placedorder}
+                  variant="contained"
+                  sx={{ backgroundColor: "#b71c1c",fontSize:"1.2vw" }}
+                >
+                  Continue
+                </Button>
+              }
+            />
+          </BottomNavigation>
+        </Paper>
+      </Box>
     </>
   );
 }
