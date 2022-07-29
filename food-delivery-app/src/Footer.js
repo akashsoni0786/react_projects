@@ -19,6 +19,7 @@ import {
   IconButton,
   ListItemButton,
   ListItemIcon,
+  Tooltip,
   Typography,
 } from "@mui/material";
 // import * as React from 'react';
@@ -59,58 +60,61 @@ export default function FixedBottomNavigation(props) {
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
             >
-              {props.cartarray.length == 0? <h1>Your cart is empty</h1> :<TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="right">Category</TableCell>
-                      <TableCell align="right">Price&nbsp;(₹)</TableCell>
-                      <TableCell align="right">Quantity</TableCell>
-                      <TableCell align="right">Total&nbsp;Price </TableCell>
-                      <TableCell align="right">Remove</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {props.cartarray.map((row) => (
-                      <TableRow
-                        key={row.name}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 }
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
-                        <TableCell align="right">{row.name}</TableCell>
-                        <TableCell align="right">{row.price}</TableCell>
-                        <TableCell align="right">{row.quan}</TableCell>
-                        <TableCell align="right">
-                          {Number(row.quan) * Number(row.price)}
-                        </TableCell>
-                        <p hidden={true}>
-                          {() => {
-                            let t = Number(row.quan) * Number(row.price);
-                            setTotal(total + t);
-                          }}
-                        </p>
-                        <TableCell align="right">
-                          <IconButton aria-label="delete" size="small">
-                            <img
-                              id={row.id}
-                              onClick={props.deleteFood}
-                              alt=""
-                              src="download.png"
-                              style={{ width: "20px" }}
-                            />
-                          </IconButton>
-                        </TableCell>
+              {props.cartarray.length == 0 ? (
+                <h1>Your cart is empty</h1>
+              ) : (
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Name</TableCell>
+                        <TableCell align="right">Category</TableCell>
+                        <TableCell align="right">Price&nbsp;(₹)</TableCell>
+                        <TableCell align="right">Quantity</TableCell>
+                        <TableCell align="right">Total&nbsp;Price </TableCell>
+                        <TableCell align="right">Remove</TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>}
-              
+                    </TableHead>
+                    <TableBody>
+                      {props.cartarray.map((row) => (
+                        <TableRow
+                          key={row.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {row.name}
+                          </TableCell>
+                          <TableCell align="right">{row.name}</TableCell>
+                          <TableCell align="right">{row.price}</TableCell>
+                          <TableCell align="right">{row.quan}</TableCell>
+                          <TableCell align="right">
+                            {Number(row.quan) * Number(row.price)}
+                          </TableCell>
+                          <p hidden={true}>
+                            {() => {
+                              let t = Number(row.quan) * Number(row.price);
+                              setTotal(total + t);
+                            }}
+                          </p>
+                          <TableCell align="right">
+                            <IconButton aria-label="delete" size="small">
+                              <img
+                                id={row.id}
+                                onClick={props.deleteFood}
+                                alt=""
+                                src="download.png"
+                                style={{ width: "20px" }}
+                              />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              )}
             </Drawer>
           </React.Fragment>
         ))}
@@ -139,36 +143,49 @@ export default function FixedBottomNavigation(props) {
             <BottomNavigationAction
               label="Recents"
               icon={
-                <Typography sx={{fontSize:"1.5vw"}}>Your Orders({props.cartarray.length})</Typography>
+                <Typography sx={{ fontSize: "20px" }}>
+                  Orders({props.cartarray.length})
+                </Typography>
               }
             />
             <BottomNavigationAction
               label="Favorites"
-              icon={<Typography sx={{fontSize:"2vw"}}>Total : ₹{sum}</Typography>}
+              icon={
+                <Typography sx={{ fontSize: "20px" }}>
+                  Total : ₹{sum}
+                </Typography>
+              }
             />
             <BottomNavigationAction
               label="Archive"
               icon={
-                <Button
-                  onClick={props.emptyit}
-                  variant="contained"
-                  sx={{ backgroundColor: "#b71c1c",fontSize:"1.2vw" }}
-                >
-                  Empty Cart
-                </Button>
+                <Tooltip title="Empty cart">
+                  <IconButton>
+                    <img
+                      onClick={props.emptyit}
+                      alt=""
+                      src="https://cdn-icons-png.flaticon.com/512/1437/1437185.png"
+                      style={{ width: "30px" }}
+                    />
+                  </IconButton>
+                </Tooltip>
               }
             />
 
             <BottomNavigationAction
               label="Archive"
               icon={
-                <Button
-                  onClick={props.placedorder}
-                  variant="contained"
-                  sx={{ backgroundColor: "#b71c1c",fontSize:"1.2vw" }}
-                >
-                  Continue
-                </Button>
+                <Tooltip title="Order this ?">
+                  <IconButton>
+                    <img
+                       onClick={props.placedorder}
+                      alt=""
+                      src="https://cdn-icons.flaticon.com/png/512/3246/premium/3246728.png?token=exp=1659098612~hmac=33b793e89ee20dd74dd27fcd27f7df57"
+                      style={{ width: "30px" }}
+                    />
+                  </IconButton>
+                </Tooltip>
+                
               }
             />
           </BottomNavigation>

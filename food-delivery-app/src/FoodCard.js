@@ -16,6 +16,7 @@ export default function MediaControlCard(props) {
 
   return (
     <Card sx={{ display: 'flex', backgroundColor:"", width:"450px",
+    margin:"10px 20px",
     border:"1px solid black",borderRadius:"10px",flexDirection:"row",justifyContent:"space-between",boxShadow:"0px 0px 5px 5px black"}}>
       <Box sx={{ display: 'flex', flexDirection: 'column',width:"50%" }}>
         <CardContent sx={{ flex: '1 0 auto' }}>

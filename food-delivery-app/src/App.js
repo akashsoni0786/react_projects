@@ -82,6 +82,18 @@ const App = () => {
       price: "20",
       category: "veg",
     },
+    {
+      id: "011",
+      name: "Pizza",
+      price: "20",
+      category: "veg",
+    },
+    {
+      id: "012",
+      name: "Pizza",
+      price: "20",
+      category: "veg",
+    },
   ];
   const addfood = (e) => {
     let cartarray;
