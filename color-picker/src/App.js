@@ -75,9 +75,9 @@ const App = () => {
     let h = hex.split("");
     if (h.length == 7) {
       if (h[0] === "#") {
-        alert(hex);
+        
         var v = /^#[0-9a-f]{2}[0-9a-f]{2}[0-9a-f]{2}$/i.test(hex);
-        alert(v);
+        
         if (v) {
           let red = h[1] + h[2];
           let green = h[3] + h[4];
@@ -97,7 +97,6 @@ const App = () => {
   };
   const colorpicker =(e)=>{
     setClr(e.target.id)
-    // alert(e.target.id)
 
   }
   return (
@@ -132,6 +131,7 @@ const App = () => {
         <button className="convertbtn" onClick={converttohex}>
           CONVERT
         </button>
+        <input placeholder="Like it"  style={{width:'5vw'}} type='color' onChange={(e)=>{setClr(e.target.value)}}/>
         <h1>{clr}</h1>
       </header>
       <h1>Color Picker</h1>
