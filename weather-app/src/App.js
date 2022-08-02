@@ -7,6 +7,14 @@ import Stromy from "./Stromy";
 import Supermoon from "./Supermoon";
 
 function App() {
+  const conditions = [
+    "Sunny",
+    "Clear",
+    "Light rain shower",
+    "Mist",
+    "Patchy rain possible",
+    "Partly cloudy"
+  ];
   const [weather, setWeather] = React.useState([]);
   const [search, setSearch] = React.useState("");
   const [city, setCity] = React.useState("");
@@ -23,7 +31,7 @@ function App() {
 
   React.useEffect(() => {
     const fetchApi = async () => {
-      const url = `https://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=$location=${search}`;
+      const url = `https://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=${search}`;
       const response = await fetch(url);
       const resjson = response.json();
       resjson.then((result) => {
@@ -39,41 +47,69 @@ function App() {
     } else {
       console.log(weather);
       let humiditys = weather.current.humidity;
-      let temp = weather.current.temp_c;
+      let temp = Number(weather.current.temp_c);
       let wind = weather.current.wind_kph;
       let cityname = weather.location.name;
-      setDate(weather.current.last_updated);
-
+      setDate(weather.current.condition.text);
+      alert(weather.current.condition.text);
       setHumidity(humiditys);
       setCity(cityname);
       setTemp(temp);
       setWind(wind);
-      if (temp < 10) {
+      if (weather.current.condition.text === "Fog") {
         setStatus(3);
         setBacklayer(
           "url('" +
             "https://images.unsplash.com/photo-1482489603187-f0ae98f407a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c25vd3l8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
             "')"
         );
-      } else if (temp < 10 && wind > 10) {
+      }
+      if (weather.current.condition.text === "Light rain shower") {
+        setStatus(3);
+        setBacklayer(
+          "url('" +
+            "https://images.unsplash.com/photo-1603725948316-3dea981def6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxpZ2h0JTIwcmFpbiUyMHNob3dlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60" +
+            "')"
+        );
+      }
+      if (weather.current.condition.text === 'Mist') {
         setStatus(4);
         setBacklayer(
           "url('" +
             "https://images.unsplash.com/photo-1561485132-59468cd0b553?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHN0cm9teSUyMHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
             "')"
         );
-      } else if (10 < temp < 25) {
-        setStatus(2);
+      }
+      if (weather.current.condition.text=== "Patchy rain possible") {
+        setStatus(4);
         setBacklayer(
           "url('" +
-            "https://images.unsplash.com/photo-1443694910004-3567042689f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNsb3VkeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60" +
+            "https://images.unsplash.com/photo-1603725948316-3dea981def6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxpZ2h0JTIwcmFpbiUyMHNob3dlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60" +
             "')"
         );
-      } else if (25 < temp) {
+      }
+      if (weather.current.condition.text=== "Partly cloudy") {
+        setStatus(4);
+        setBacklayer(
+          "url('" +
+            "https://images.unsplash.com/photo-1469365556835-3da3db4c253b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGFydGx5JTIwY2xvdWR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" +
+            "')"
+        );
+      }
+      if (weather.current.condition.text == "Sunny") {
         setStatus(1);
         setBacklayer(
           "url('" +
             "https://images.unsplash.com/photo-1594220862488-117b78382514?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHN1bm55fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" +
+            "')"
+        );
+      }
+
+      if (weather.current.condition.text == "Clear") {
+        setStatus(1);
+        setBacklayer(
+          "url('" +
+            "https://images.unsplash.com/photo-1601297183305-6df142704ea2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
             "')"
         );
       }
@@ -83,20 +119,23 @@ function App() {
   const icons = () => {
     if (status == 1) {
       return <Sunny />;
-    } else if (status == 2) {
+    }
+    if (status == 2) {
       return <Cloudy />;
-    } else if (status == 3) {
+    }
+    if (status == 3) {
       return <Snowy />;
-    } else if (status == 4) {
+    }
+    if (status == 4) {
       return <Stromy />;
-    } else if (status == 5) {
+    }
+    if (status == 5) {
       return <Supermoon />;
     }
   };
 
   return (
     <div className="whole" style={{ backgroundImage: backlayer }}>
-
       <div className="alldetails">
         {icons()}
         <input
@@ -122,7 +161,7 @@ function App() {
             <div className="boxglass">Temperature : {temp}&#8451;</div>
             <div className="boxglass">Wind speed : {wind}km/h</div>
             <div className="boxglass">Humidity : {humidity}%</div>
-            <div className="boxglass">Date : {date}</div>
+            <div className="boxglass">Condition : {date}</div>
           </div>
         </>
       )}
