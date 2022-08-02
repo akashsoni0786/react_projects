@@ -31,12 +31,17 @@ function App() {
 
   React.useEffect(() => {
     const fetchApi = async () => {
-      const url = `https://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=${search}`;
-      const response = await fetch(url);
-      const resjson = response.json();
-      resjson.then((result) => {
-        setWeather(result);
-      });
+      try{
+        const url = `https://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=${search}`;
+        const response = await fetch(url);
+        const resjson = response.json();
+        resjson.then((result) => {
+          setWeather(result);
+        });
+      }
+      catch(e){
+        alert("Not found");
+      }
     };
     fetchApi();
   });
@@ -44,14 +49,15 @@ function App() {
   const show = () => {
     if (search == "") {
       alert("Field is empty");
-    } else {
+    } 
+    
+    else {
       console.log(weather);
       let humiditys = weather.current.humidity;
       let temp = Number(weather.current.temp_c);
       let wind = weather.current.wind_kph;
       let cityname = weather.location.name;
       setDate(weather.current.condition.text);
-      alert(weather.current.condition.text);
       setHumidity(humiditys);
       setCity(cityname);
       setTemp(temp);
