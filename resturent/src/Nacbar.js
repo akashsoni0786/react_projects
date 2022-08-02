@@ -43,7 +43,7 @@ const ResponsiveAppBar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
+      
             href="/"
             sx={{
               mr: 2,
@@ -99,7 +99,7 @@ const ResponsiveAppBar = () => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            
             href=""
             sx={{
               mr: 2,
@@ -155,11 +155,9 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+               <MenuItem key="logout" onClick={handleCloseUserMenu}>
+                <Link style={{textDecoration:"none"}} to='/'>  <Typography textAlign="center">Logout</Typography></Link>
                 </MenuItem>
-              ))}
             </Menu>
           </Box>
         </Toolbar>

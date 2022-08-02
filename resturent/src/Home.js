@@ -9,7 +9,7 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 const Home = () => {
   return (
     <div>
-        <img className='carousel' alt="" src='./carousel.jpg'/>
+        <img className='carousel' alt="" src='https://cdn.grabon.in/gograbon/images/merchant/1610000375685.png'/>
         <h1 className='heading'>TOP SERVICES</h1>
         <div className='services'>
             <div className='everyblock'><img alt='' src='icon1.png' />
