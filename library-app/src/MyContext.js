@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 export const contextname = React.createContext();
 const MyContext = (props) => {
   const [alldata, setAllDate] = React.useState("");
   const [isbn, setISBN] = React.useState("");
   const [search, setSearch] = React.useState("");
+  const [isLoading, setIsLoading] = useState(false);
   React.useEffect(() => {
     const fetchallbookApi = async () => {
+      setIsLoading(true);
       try {
         const url = `https://openlibrary.org/search.json?q=${search}&mode=ebooks&has_fulltext=true`;
         const response = await fetch(url);
         const resjson = response.json();
         resjson.then((result) => {
-          setAllDate(result);
-          console.log(alldata);
+          setAllDate(result.docs);
+          setIsLoading(false);
         });
       } catch (e) {
         console.log("Not found");
@@ -32,9 +34,13 @@ const MyContext = (props) => {
     // };
     fetchallbookApi();
     // fetchbookApi();
-  },[search]);
+  }, [search]);
   return (
-    <contextname.Provider value={[alldata,search,setSearch]}>{props.children}</contextname.Provider>
+    <contextname.Provider
+      value={[alldata, search, setSearch, setAllDate, isLoading, setIsLoading]}
+    >
+      {props.children}
+    </contextname.Provider>
   );
 };
 

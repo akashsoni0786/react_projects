@@ -1,15 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import Library from './Library';
+import React from "react";
+import { Route, Router, Routes } from "react-router-dom";
+import Book from "./Book";
+import Library from "./Library";
+import Navbar from "./Nav";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Library />
-      </header>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Library />} />
+        <Route path="/book" element={<Book />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

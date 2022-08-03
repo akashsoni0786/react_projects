@@ -12,7 +12,6 @@ function App() {
   const [login,setLogin] = React.useContext(contextname);
   return (
     <div className="App">
-      {/* <ResponsiveAppBar /> */}
      {login == 1 && <ResponsiveAppBar />}
       <Routes>
         <Route path="/" element={<Login />} />
