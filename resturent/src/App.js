@@ -9,10 +9,10 @@ import Reaturants from "./Reaturants";
 import Signup from "./Signup";
 
 function App() {
-  const [login,setLogin] = React.useContext(contextname);
+  const contxt = React.useContext(contextname);
   return (
     <div className="App">
-     {login == 1 && <ResponsiveAppBar />}
+     {contxt.login == 1 && <ResponsiveAppBar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

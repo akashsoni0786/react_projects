@@ -26,11 +26,11 @@ button{
 .boxglass{
   padding: 50px 0px;
   width: 350px;
-  /* height: 150px; */
+  margin: 20px 20px;
   background-color: rgb(127, 190, 214,0.6);
-  border-radius: 20px;
+  border-radius: 10px;
   text-align: center;
- font-size: 3rem;
+ font-size: 2rem;
  font-weight: bold;
  color: white;
 }

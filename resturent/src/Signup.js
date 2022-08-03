@@ -1,32 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { contextname } from "./MyContext";
 const Signup = () => {
   let navigate = useNavigate();
-  const [username,setUsername] = React.useState('');
-  const [pass,setPass] = React.useState('');
-  const [conpass,setConPass] = React.useState('');
-  const [usertemp,setUserTemp,pastemp,setPastemp] = React.useContext(contextname);
-  const signupbtn = ()=>{
-    if(username == '' || pass == '' || conpass == ''){
-      alert('All fields are mandetory');
-    }
-    else{
-      if(pass === conpass){
-        alert("U r registered successfully")
-        
-        setUserTemp(username);
-        setPastemp(pass);
+  // const [usertemp, setUserTemp, pastemp, setPastemp] =
+    const contxt = React.useContext(contextname);
+  console.log(contxt.pastemp);
+  console.log(contxt.usertemp);
+  const [username, setUsername] = React.useState("");
+  const [pass, setPass] = React.useState("");
+  const [conpass, setConPass] = React.useState("");
+
+  const signupbtn = () => {
+    if (username == "" || pass == "" || conpass == "") {
+      alert("All fields are mandetory");
+    } else {
+      if (pass === conpass) {
+        alert("U r registered successfully");
+        contxt.setPastemp(pass);
+        contxt.setUserTemp(username);
         navigate('/');
-        
-      }
-      else{
-        alert("Passwords are not same!!!")
+        console.log(contxt.usertemp);
+        console.log(contxt.pastemp);
+      } else {
+        alert("Passwords are not same!!!");
       }
     }
-  }
+  };
 
   return (
     <div>
@@ -39,7 +41,9 @@ const Signup = () => {
           <b>Username</b>
         </label>
         <input
-          onChange={(e) => {setUsername(e.target.value)}}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
           type="text"
           placeholder="Enter Username"
         />
@@ -48,7 +52,9 @@ const Signup = () => {
           <b>Password</b>
         </label>
         <input
-          onChange={(e) => {setPass(e.target.value)}}
+          onChange={(e) => {
+            setPass(e.target.value);
+          }}
           type="password"
           placeholder="Enter Password"
         />
@@ -57,12 +63,16 @@ const Signup = () => {
           <b>Confirm Password</b>
         </label>
         <input
-          onChange={(e) => {setConPass(e.target.value)}}
+          onChange={(e) => {
+            setConPass(e.target.value);
+          }}
           type="password"
           placeholder="Enter Password"
         />
 
-        <button onClick={signupbtn} type="submit">Signup</button>
+        <button onClick={signupbtn} type="submit">
+          Signup
+        </button>
       </div>
 
       <div className="container" style={{ backgrounColor: "#f78e21" }}>

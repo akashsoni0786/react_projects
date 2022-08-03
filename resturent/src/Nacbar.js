@@ -1,23 +1,23 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router-dom';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
+import { contextname } from "./MyContext";
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
+  const contxt = React.useContext(contextname);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -35,30 +35,34 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const logout = () => {
+    contxt.setLogin(0);
+  };
   return (
     <AppBar position="static" elevation={0}>
-      <Container maxWidth="100%" sx={{backgroundColor:"white",color:"#f78e21"}}>
+      <Container
+        maxWidth="100%"
+        sx={{ backgroundColor: "white", color: "#f78e21" }}
+      >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
-      
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-            <img alt='' src='logo.png' style={{width:"100px"}}/>
+            <img alt="" src="logo.png" style={{ width: "100px" }} />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -73,64 +77,69 @@ const ResponsiveAppBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
-
-                <MenuItem key="Home" onClick={handleCloseNavMenu}>
-                <Link style={{textDecoration:"none"}} to="/home"><Typography textAlign="center">Home</Typography></Link>
-                </MenuItem>
-                <MenuItem key="Restuarents" onClick={handleCloseNavMenu}>
-                <Link style={{textDecoration:"none"}} to="/restuarents"><Typography textAlign="center">Restuarents</Typography></Link>
-                </MenuItem>
+              <MenuItem key="Home" onClick={handleCloseNavMenu}>
+                <Link style={{ textDecoration: "none" }} to="/home">
+                  <Typography textAlign="center">Home</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem key="Restuarents" onClick={handleCloseNavMenu}>
+                <Link style={{ textDecoration: "none" }} to="/restuarents">
+                  <Typography textAlign="center">Restuarents</Typography>
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
             variant="h5"
             noWrap
-            
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-            <img alt='' src='logo.png' style={{width:"100px"}}/>
+            <img alt="" src="logo.png" style={{ width: "100px" }} />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Link style={{textDecoration:"none"}} to="/home"><Button
-              key='Home'
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color:"#f78e21", display: 'block' }}
-            >
-              Home
-            </Button></Link>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Link style={{ textDecoration: "none" }} to="/home">
+              <Button
+                key="Home"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "#f78e21", display: "block" }}
+              >
+                Home
+              </Button>
+            </Link>
 
-            <Link style={{textDecoration:"none"}} to="/restuarents"><Button
-              key='Restuarents'
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color:"#f78e21", display: 'block' }}
-            >
-              Restuarents
-            </Button></Link>
-              
+            <Link style={{ textDecoration: "none" }} to="/restuarents">
+              <Button
+                key="Restuarents"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "#f78e21", display: "block" }}
+              >
+                Restuarents
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -140,24 +149,31 @@ const ResponsiveAppBar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-               <MenuItem key="logout" onClick={handleCloseUserMenu}>
-                <Link style={{textDecoration:"none"}} to='/'>  <Typography textAlign="center">Logout</Typography></Link>
-                </MenuItem>
+              <MenuItem key="logout" onClick={handleCloseUserMenu}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/"
+                  onClick={logout}
+                >
+                  {" "}
+                  <Typography textAlign="center">Logout</Typography>
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

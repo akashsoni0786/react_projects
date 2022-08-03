@@ -8,7 +8,7 @@ const MyContext = (props) => {
     const [usernamefinal,setUsernamefinal] = React.useState('');
     const [passfinal,setPassfinal] = React.useState('');
   return (
-    <contextname.Provider value={[login,setLogin,pastemp,setPastemp,usernamefinal,setUsernamefinal,passfinal,setPassfinal,usertemp,setUserTemp]}>
+    <contextname.Provider value={{login:login,setLogin:setLogin,pastemp:pastemp,setPastemp:setPastemp,usernamefinal:usernamefinal,setUsernamefinal:setUsernamefinal,passfinal:passfinal,setPassfinal:setPassfinal,usertemp:usertemp,setUserTemp:setUserTemp}}>
         {props.children}
     </contextname.Provider>
   )

@@ -1,36 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { contextname } from "./MyContext";
+
 const Login = (props) => {
+  let navigate = useNavigate();
   const [username2, setUsername2] = React.useState("");
   const [pass2, setPass2] = React.useState("");
 
-  const [
-    login,
-    setLogin,
-    pastemp,
-    setPastemp,
-    usernamefinal,
-    setUsernamefinal,
-    passfinal,
-    setPassfinal,
-    usertemp,
-    setUserTemp,
-  ] = React.useContext(contextname);
+ 
+ const contxt = React.useContext(contextname);
 
   const loginbtn = () => {
+ 
     console.log( username2);
     console.log( pass2);
-    console.log( usertemp);
-    console.log( pastemp);
+    console.log( contxt.usertemp);
+    console.log( contxt.pastemp);
     if (username2 == "" || pass2 == "") {
       alert("All fields are mandetory");
     } else {
-      if (pass2 == pastemp && username2 == usertemp) {
-        setUsernamefinal(username2);
-        setPassfinal(pass2);
-        setLogin(1);
+      if (pass2 == contxt.pastemp && username2 == contxt.usertemp) {
+        contxt.setUsernamefinal(username2);
+        contxt.setPassfinal(pass2);
+        contxt.setLogin(1);
+        navigate("home")
       } else {
         alert("Invalid Credentials");
       }
