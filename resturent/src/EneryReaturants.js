@@ -6,7 +6,9 @@ const EneryReaturants = (props) => {
   // React.useEffect(()=>{window.scrollTo(0)})
   const location = useLocation();
   const { detalis } = location.state
-  
+  React.useEffect(()=>{
+    window.scrollTo(0,0)
+  })
     return (
       <>
     <div className='back' style={{backgroundImage:"url("+detalis.photograph+")"}}>

@@ -70,3 +70,17 @@ span.psw {
         width: 100%;
     }
 }
+.allrestro{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.searchbar
+{
+    /* justify-content: center; */
+    margin: 10px 5%;
+    padding: 20px 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    /* width: 80%; */
+}

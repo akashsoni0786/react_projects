@@ -63,7 +63,7 @@ const Login = (props) => {
           Login
         </button>
       </div>
-
+      
       <div className="container" style={{ backgrounColor: "#f78e21" }}>
         No account?
         <Link to="/signup">
@@ -72,6 +72,7 @@ const Login = (props) => {
           </button>
         </Link>
       </div>
+      <marquee className="offers" behavior="alternate" direction="left">Add gift card no. AKA123 and get 1000 rupees off on order</marquee>
     </div>
   );
 };
