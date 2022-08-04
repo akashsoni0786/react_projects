@@ -1,0 +1,306 @@
+.App {
+  text-align: center;
+}
+.contactushead{
+  margin: 50px 0px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.nav{
+  background-color: rgb(236, 233, 233);
+  margin: -20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 5rem;
+  color: white;
+  /* position: fixed;
+  width: 100%; */
+}
+
+.nav ul{
+  display: flex;
+  font-size: 15px;
+  list-style: none;
+  gap: 2rem;
+}
+.nav li{
+  cursor: pointer;
+  color: black;
+}
+.nav li:hover{
+  cursor: pointer;
+  color: #f7444e;
+}
+
+
+.nav .link{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav .link:hover{
+  cursor: pointer;
+  color: #f7444e;
+}
+.nav .link.active{
+  cursor: pointer;
+  color: gray;
+}
+.logomain{
+  width: 30px;
+}
+.logoname{
+  color: black;
+}
+.advertisment{
+  /* padding-top:100px ; */
+  text-align: start;
+  height: 80vh; 
+  background-image: url("https://technext.github.io/famms/images/slider-bg.jpg");
+  background-size: cover;
+}
+.offername{
+  padding: 9rem 3rem;
+}
+.offername p:first-child{
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername p{
+  color: #f7444e;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername div{
+  text-align: justify;
+  width: 30%;
+  color: grey;
+  font-size: .8rem;
+  margin: 0rem 100px;
+}
+.offername button{
+  background-color: #f7444e;
+  color: white;
+  padding: 5px 20px;
+  /* cursor: pointer; */
+  margin: 2rem 100px;
+}
+/* .offername button:hover{
+  border: 2px solid #f7444e;;
+  background-color: white;
+  color: #f7444e;;
+  padding: 5px 20px;
+  cursor: pointer;
+} */
+
+.allcards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.whyshopwithus p{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+.cards{
+  padding: 50px 0px;
+  width: 200px;
+  background-color: #002c3e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 15px;
+}
+.cards img{
+
+  width: 50px;
+  padding: 10px 0px;
+}
+.cards p{
+  color: white;
+  margin: 0px 10px;
+  font-size: 22px;
+}
+.cards span{
+  color: white;
+  margin: 0px 15px;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.advertisment2{
+  
+  margin: 50px 0px;
+  text-align: start;
+  height: 80vh; 
+  background-image: url("https://technext.github.io/famms/images/arrival-bg.png");
+  background-size: cover;
+}
+.offername2{
+  padding: 9rem 3rem;
+  text-align: end;
+}
+.offername2 p:first-child{
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername2 p{
+  color: #f7444e;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+
+.offername2 button{
+  background-color: #f7444e;
+  color: white;
+  padding: 5px 20px;
+  /* cursor: pointer; */
+  margin: 2rem 100px;
+}
+/* .offername2 button:hover{
+  border: 2px solid #f7444e;
+  background-color: white;
+  color: #f7444e;
+  padding: 5px 20px;
+  cursor: pointer;
+} */
+.ourproducts{
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 50px;
+}
+.headourpro span:first-child{
+  color: #f7444e;
+}
+.allcardsofproducts{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.productcard{
+  border-radius: 5px;
+  background-color: #d4ced0;
+  padding: 10px;
+  width: 150px;
+  align-items: center;
+  margin: 20px 10px;
+
+}
+.productcard img{
+  height: 150px;
+}
+.pricename{
+  display: flex;
+  justify-content: space-around;
+  font-size: 17px;
+  font-weight: 400;
+}
+.addtocartbtn{
+  border-radius:5px ;
+  color: white;
+  border: 2px solid #f7444e;
+  background-color: #f7444e;
+  padding: 5px 10px;
+  margin: 0px 20px;
+  width: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.addtocartbtn:hover{
+  border-radius:5px ;
+  border: 2px solid #f7444e;
+  color: #f7444e;
+  background-color: white;
+  padding: 5px 10px;
+  margin: 0px 20px;
+  width: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.carttablediv{
+  margin: 0px 20vw;
+}
+.carttable tr{
+  border-bottom: 2px solid black;
+}
+.carttable th{
+  width: 20%;
+}
+.proceedtocheckout{
+  border-radius:5px ;
+  color: white;
+  border: 2px solid #f7444e;
+  background-color: #f7444e;
+  padding: 5px 10px;
+  margin: 50px 0vw;
+  width: 55vw;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.proceedtocheckout:hover{
+  border-radius:5px ;
+  color: #f7444e;
+  border: 2px solid #f7444e;
+  background-color: white;
+  padding: 5px 10px;
+  margin: 50px 0vw;
+  width: 55vw;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.carttable{
+  margin: 0px 0px;
+}
+.footer{
+
+
+  color: aliceblue;
+  background-color: #f7444e;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.footer span{
+  font-size: 10px;
+}
+.footer h4{
+  font-size: 10px;
+}
+
+.deleteit{
+  cursor: pointer;
+}
+.deleteit:hover{
+  color: #f7444e;
+  cursor: pointer;
+}

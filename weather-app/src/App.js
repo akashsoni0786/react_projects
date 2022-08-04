@@ -1,11 +1,6 @@
 import "./App.css";
 import React from "react";
-import Sunny from "./Sunny";
-import Cloudy from "./Cloudy";
-import Snowy from "./Snowy";
-import Stromy from "./Stromy";
-import Supermoon from "./Supermoon";
-
+import "./Final.css"
 function App() {
   const conditions = [
     "Sunny",
@@ -13,7 +8,7 @@ function App() {
     "Light rain shower",
     "Mist",
     "Patchy rain possible",
-    "Partly cloudy"
+    "Partly cloudy",
   ];
   const [weather, setWeather] = React.useState([]);
   const [search, setSearch] = React.useState("");
@@ -21,156 +16,92 @@ function App() {
   const [temp, setTemp] = React.useState("");
   const [wind, setWind] = React.useState("");
   const [date, setDate] = React.useState("");
-  const [humidity, setHumidity] = React.useState("");
-  const [status, setStatus] = React.useState(0);
-  const [backlayer, setBacklayer] = React.useState(
-    "url('" +
-      "https://images.unsplash.com/photo-1622671879425-51a41bb977ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHN1bm55fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" +
-      "')"
-  );
+  const [icon, setIcon] = React.useState("");
 
+  const [humidity, setHumidity] = React.useState("");
   React.useEffect(() => {
     const fetchApi = async () => {
-      try{
+      try {
         const url = `https://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=${search}`;
         const response = await fetch(url);
         const resjson = response.json();
         resjson.then((result) => {
           setWeather(result);
         });
-      }
-      catch(e){
+      } catch (e) {
         alert("Not found");
       }
     };
     fetchApi();
-  });
+ 
+  },[search]);
 
   const show = () => {
+  
     if (search == "") {
       alert("Field is empty");
-    } 
-    
-    else {
+    } else {
       console.log(weather);
       let humiditys = weather.current.humidity;
       let temp = Number(weather.current.temp_c);
       let wind = weather.current.wind_kph;
       let cityname = weather.location.name;
       setDate(weather.current.condition.text);
+      setIcon(weather.current.condition.icon);
       setHumidity(humiditys);
       setCity(cityname);
       setTemp(temp);
       setWind(wind);
-      if (weather.current.condition.text === "Fog") {
-        setStatus(3);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1482489603187-f0ae98f407a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c25vd3l8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      if (weather.current.condition.text === "Light rain shower") {
-        setStatus(3);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1603725948316-3dea981def6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxpZ2h0JTIwcmFpbiUyMHNob3dlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      if (weather.current.condition.text === 'Mist') {
-        setStatus(4);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1561485132-59468cd0b553?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHN0cm9teSUyMHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      if (weather.current.condition.text=== "Patchy rain possible") {
-        setStatus(4);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1603725948316-3dea981def6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxpZ2h0JTIwcmFpbiUyMHNob3dlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      if (weather.current.condition.text=== "Partly cloudy") {
-        setStatus(4);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1469365556835-3da3db4c253b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGFydGx5JTIwY2xvdWR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      if (weather.current.condition.text == "Sunny") {
-        setStatus(1);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1594220862488-117b78382514?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHN1bm55fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-
-      if (weather.current.condition.text == "Clear") {
-        setStatus(1);
-        setBacklayer(
-          "url('" +
-            "https://images.unsplash.com/photo-1601297183305-6df142704ea2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60" +
-            "')"
-        );
-      }
-      icons();
     }
   };
-  const icons = () => {
-    if (status == 1) {
-      return <Sunny />;
-    }
-    if (status == 2) {
-      return <Cloudy />;
-    }
-    if (status == 3) {
-      return <Snowy />;
-    }
-    if (status == 4) {
-      return <Stromy />;
-    }
-    if (status == 5) {
-      return <Supermoon />;
-    }
-  };
+ 
 
   return (
-    <div className="whole" style={{ backgroundImage: backlayer }}>
-      <div className="alldetails">
-        {icons()}
-        <input
-          placeholder="Enter city name"
+
+    <div>
+      <div className="card">
+        <div className="search">
+          <input type="text"
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-        />
-        <button onClick={show}>SHOW</button>
-      </div>
-      {status != 0 && (
-        <>
-          <div className="alldetails2">
+          className="searchbar"
+           placeholder="Search" />
+          <button onClick={show}>
+            <svg
+            onClick={show}
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path  d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+            </svg>
+          </button>
+        </div>
+          {/* {weather.location == [] ? <p>Loding......</p>:( */}
+            <div className="weather">
+          <h2 className="city">Weather in {city}</h2>
+          <h1 className="temp">{temp}&#8451;</h1>
+          <div className="flex">
             <img
               alt=""
-              src="https://cdn-icons-png.flaticon.com/128/535/535188.png"
-            />
-            <p style={{ color: "black", fontWeight: "bold", fontSize: "3rem" }}>
-              {city}
-            </p>
+              src={icon}
+              className="icon"
+            ></img>
+            <div className="description">{date}</div>
           </div>
-          <div className="alldetails">
-            <div className="boxglass">Temperature : {temp}&#8451;</div>
-            <div className="boxglass">Wind speed : {wind}km/h</div>
-            <div className="boxglass">Humidity : {humidity}%</div>
-            <div className="boxglass">Condition : {date}</div>
-          </div>
-        </>
-      )}
+          <div className="humidity">Humidity: {humidity}%</div>
+          <div className="wind">Wind speed: {wind} km/h</div>
+        </div>
+          {/* )} */}
+        
+
+
+      </div>
     </div>
   );
 }
