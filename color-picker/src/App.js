@@ -75,9 +75,7 @@ const App = () => {
     let h = hex.split("");
     if (h.length == 7) {
       if (h[0] === "#") {
-        
         var v = /^#[0-9a-f]{2}[0-9a-f]{2}[0-9a-f]{2}$/i.test(hex);
-        
         if (v) {
           let red = h[1] + h[2];
           let green = h[3] + h[4];
