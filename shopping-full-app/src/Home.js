@@ -6,6 +6,7 @@ import MyCarousel from "./Carousel";
 import ProductCarousel from "./ProductCarousel";
 
 const Home = (props) => {
+
   return (
     <>
       <MyCarousel />

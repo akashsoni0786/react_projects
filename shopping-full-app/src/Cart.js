@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
-
+import { Link, useNavigate } from "react-router-dom";
 const Cart = (props) => {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     total: 0,
     cart: 0,
@@ -12,8 +13,7 @@ const Cart = (props) => {
     e.target.previousElementSibling.textContent =
       parseInt(e.target.previousElementSibling.textContent) + 1;
     var q = e.target.previousElementSibling.textContent;
-    var p = e.target.parentElement.previousElementSibling.textContent;
-    e.target.parentElement.nextElementSibling.textContent = q * p;
+    var p = e.target.parentElement.parentElement.previousElementSibling.lastChild.textContent;
     props.sendingToCart.map((i) => {
       if (e.target.id == i.id) {
         i.quan = q;
@@ -35,8 +35,7 @@ const Cart = (props) => {
       e.target.nextElementSibling.textContent =
         parseInt(e.target.nextElementSibling.textContent) - 1;
       var q = e.target.nextElementSibling.textContent;
-      var p = e.target.parentElement.previousElementSibling.textContent;
-      e.target.parentElement.nextElementSibling.textContent = q * p;
+      
       props.sendingToCart.map((i) => {
         if (e.target.id == i.id) {
           i.quan = q;
@@ -64,8 +63,9 @@ const Cart = (props) => {
     });
   };
   const proceed = () => {
-    props.emptyToCart();
-    alert("Thanks for shopping with us!!");
+    navigate("/checkout");
+    // props.emptyToCart();
+    // alert("Thanks for shopping with us!!");
   };
   const emptycart = () => {
     if (window.confirm("Do you really want to empty this cart")) {
@@ -81,68 +81,50 @@ const Cart = (props) => {
           <div>
             <h2 className="contactushead">Your Cart</h2>
             <div className="carttablediv">
-              <table className="carttable">
-                <tr>
-                  <th>
-                    <u>Name of Product</u>
-                  </th>
-                  <th>
-                    <u>Product Price</u>
-                  </th>
-                  <th>
-                    <u>Quantity</u>
-                  </th>
-                  <th>
-                    <u>Total Price</u>
-                  </th>
-                  <th>
-                    <u>Delete </u>
-                  </th>
-                </tr>
                 {props.sendingToCart.map((i) => {
                   return (
-                    <tr>
-                      <td>{i.name}</td>
-                      <td>{i.price}</td>
-                      <td>
-                        <button onClick={minusquan} id={i.id}>
-                          -
-                        </button>
-                        <span>{i.quan}</span>
-                        <button onClick={addquan} id={i.id}>
-                          +
-                        </button>
-                      </td>
-                      <td>{i.quan * parseFloat(i.price)}</td>
-                      <td>
-                        <u
-                          className="deleteit"
-                          id={i.id}
-                          onClick={props.deletethis}
-                        >
-                          Delete
-                        </u>
-                      </td>
-                    </tr>
+                    <>
+                    <div className="cartitemblock">
+                      <div className="cartimg">
+                        <img className="cartimg" alt="" src={i.pic} />
+                      </div>
+                      <div className="cartcontent">
+                        <b style={{fontSize:"20px"}}>{i.name}</b>
+                        
+                        <p><span>Price:  $</span><span>{i.price}</span></p>
+                        <div className="quantity">
+                          <p style={{ marginTop: "-1px" }}>Quantity:&nbsp;&nbsp;&nbsp;</p>
+                          <div>
+                            <button onClick={minusquan} id={i.id}>
+                              -
+                            </button>
+                            <span>{i.quan}</span>
+                            <button onClick={addquan} id={i.id}>
+                              +
+                            </button>
+                          </div>
+                        </div>
+                        <button className="deleteit" id={i.id} onClick={props.deletethis}>
+                        Delete
+                      </button>
+                      </div>
+                      
+                      
+                    </div>
+                  </>
                   );
                 })}
 
-                <tr>
-                  <th>---------</th>
-                  <th>---------</th>
-                  <th>---------</th>
-                  <th>---------</th>
-                </tr>
-              </table>
+               
               <div onClick={emptycart} className="proceedtocheckout">
                 Empty Cart{" "}
               </div>
               {state.show == 1 ? (
                 <>
                   <p>{state.total}</p>
-                  <div onClick={proceed} className="proceedtocheckout">
+                  <Link to='/checkout' state={{cartarr:props.sendingToCart,ttl:state.total}}><div onClick={proceed} className="proceedtocheckout">
                     Proceed to checkout{" "}
-                  </div>
+                  </div></Link>
                 </>
               ) : (
                 <>
@@ -160,3 +142,4 @@ const Cart = (props) => {
 };
 
 export default Cart;
+

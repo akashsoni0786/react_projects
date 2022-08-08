@@ -1,22 +1,25 @@
 import "./App.css";
 import Home from "./Home";
 import Nav from "./Nav";
-import React, { Component } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./Cart";
 import Contact from "./Contact";
 import { products } from "./Data";
-export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cartvalues: [],
+import SearchContent from "./SearchContent";
+import Checkout from "./Checkout";
+import contxtname from "./Contxt";
+
+
+const App = () => {
+  const [state,setState] = React.useState({
+    cartvalues: [],
       additem: 0,
       emptycartar: [],
-   
-    };
-  }
-  addtocart = (e) => {
+  })
+const contxtobj = React.useContext(contxtname);
+
+  const addtocart = (e) => {
     let cartarray;
     products.map((i) => {
       if (i.id === e.target.id) {
@@ -28,7 +31,7 @@ export class App extends Component {
           quan: 1,
         };
         var d=-1
-        this.state.cartvalues.forEach(a=>{
+        state.cartvalues.forEach(a=>{
           d=d+1;
           if(a.id == k.id){
             k = {
@@ -38,15 +41,17 @@ export class App extends Component {
               pic: i.pic,
               quan: Number(a.quan)+1,
             };
-            this.state.cartvalues.splice(d,1)
-            this.setState({
-              cartarray: this.state.cartvalues
+            state.cartvalues.splice(d,1)
+            setState({
+              ...state,
+              cartarray: state.cartvalues
             })
           }
         })
         console.log(cartarray)
-        cartarray = [...this.state.cartvalues, k];
-        this.setState({
+        cartarray = [...state.cartvalues, k];
+        setState({
+          ...state,
           cartvalues: cartarray,
         });
       }
@@ -54,48 +59,49 @@ export class App extends Component {
 
   }
 
-  emptycartarea = (v) => {
-    this.setState({
+  const emptycartarea = (v) => {
+    setState({
+      ...state,
       cartvalues: [],
     });
   };
 
-  delete=(e)=>{
+  const deleteit=(e)=>{
     var pid = e.target.id;
     let l=-1;
-    this.state.cartvalues.map(i=>{
+    state.cartvalues.map(i=>{
       l=l+1;
       if(i.id == pid){
-        this.state.cartvalues.splice(l,1)
-        this.setState({
-          cartvalues:this.state.cartvalues
+        state.cartvalues.splice(l,1)
+        setState({
+          ...state,
+          cartvalues:state.cartvalues
         })
       }
     })
 
   }
-  render() {
     return (
       <>
-        <Nav cartcount={this.state.cartvalues.length}/>
+        <Nav cartcount={state.cartvalues.length}/>
         <Routes>
-          <Route path="/" element={<Home addtocartfunc={this.addtocart} />} />
+          <Route path="/" element={<Home addtocartfunc={addtocart} />} />
           <Route
             path="/cart"
             element={
               <Cart
-                sendingToCart={this.state.cartvalues}
-                emptyToCart={this.emptycartarea}
-                deletethis={this.delete}
+                sendingToCart={state.cartvalues}
+                emptyToCart={emptycartarea}
+                deletethis={deleteit}
               />
             }
           />
-
+          <Route path="/searched" element={<SearchContent addtocartfunc={addtocart} />}/>
           <Route path="/contact" element={<Contact />} />
+          <Route path="/checkout" element={<Checkout empcart={emptycartarea} />}/>
         </Routes>
       </>
     );
-  }
 }
 
-export default App;
+export default App

@@ -124,7 +124,7 @@
 }
 .cards{
   padding: 50px 0px;
-  width: 200px;
+  width: 170px;
   background-color: #9D9EA3;
   border-radius: 2px;
   display: flex;
@@ -134,7 +134,7 @@
 }
 .cards img{
 
-  width: 100px;
+  width: 70px;
   padding: 10px 0px;
 }
 .cards p{
@@ -203,6 +203,7 @@
   border: 1px solid white;
   width: 250px;
   height: 500px;
+  text-align: center;
   align-items: center;
   margin: 20px 10px;
 
@@ -319,9 +320,36 @@
 }
 
 .deleteit{
+  border-radius: 5px;
+  padding: 5px;
   cursor: pointer;
+  border: none;
 }
 .deleteit:hover{
-  color: #FBB03B;
+  background-color: #FBB03B;
   cursor: pointer;
+}
+.maincartpage{
+  margin-top: 100px;
+  
+}
+.cartitemblock{
+  margin: 20px 0px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px  gray;
+  width: 100%;
+  display: flex;
+  text-align: left;
+}
+.cartimg{
+  margin: 10px;
+  width:100px;
+}
+.quantity{
+  display: flex;
+  text-align: left;
+}
+.cartcontent{
+  margin-top: 25px;
+  margin-left: 30px;
 }

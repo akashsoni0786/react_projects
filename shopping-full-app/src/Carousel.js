@@ -34,7 +34,7 @@ export default function MyCarousel(props)
 function Item(props)
 {
     return (
-        <Paper sx={{height:"inherit"}}>
+        <Paper sx={{height:"inherit",marginTop:"70px",}}>
             {/* <h2>{props.item.name}</h2>
             <p>{props.item.description}</p> */}
             <img style={{width:"100%"}} alt='' src={props.item.pics}/>

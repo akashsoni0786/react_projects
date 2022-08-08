@@ -31,13 +31,14 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeIcon from "@mui/icons-material/Home";
+import { Link, useNavigate } from "react-router-dom";
+import { products } from "./Data";
+import {contxtname} from "./Contxt";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -78,7 +79,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
+  const navigate = useNavigate();
+  var search_val = [];
+  const contxtobj = React.useContext(contxtname);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -140,17 +145,30 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-      
     >
       <MenuItem>
         <IconButton size="large" aria-label="cart" color="inherit">
-          <Badge badgeContent={17} color="error">
-            <ShoppingCartIcon />
+          <Link className="link" to="/">
+            <HomeIcon />
+          </Link>
+        </IconButton>
+        <Link className="link" to="/">
+          <p>Home</p>
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large" aria-label="cart" color="inherit">
+          <Badge badgeContent={props.cartcount} color="error">
+            <Link className="link" to="/cart">
+              <ShoppingCartIcon />
+            </Link>
           </Badge>
         </IconButton>
-        <p>Cart</p>
+        <Link className="link" to="/cart">
+          <p>Cart</p>
+        </Link>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      {/* <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -161,21 +179,38 @@ export default function PrimarySearchAppBar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem>
+      </MenuItem> */}
     </Menu>
   );
-
+  const search_products = (e) => {
+    navigate("/searched");
+    var searchtext = e.target.value;
+    products.map((i) => {
+      if (i.name.includes(searchtext)) {
+        search_val = [...search_val, i];
+        console.log(search_val)
+        contxtobj.setSearch(search_val);
+      }
+    });
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "transparent" }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          position: "fixed",
+          backgroundColor: "white",
+          overflow: "hidden",
+          top: "0",
+          marginBottom: "70px",
+        }}
+      >
         <Toolbar>
-          
-           <Typography
-            
+        <Link className="link" to="/"><Typography
             aria-label="open drawer"
             sx={{
               fontWeight: "1000",
-              display: { xs: "none", sm: "block" },
+              display: { xs: "block", sm: "block" },
               fontFamily: "'Satisfy', cursive",
               borderRadius: "5px",
               padding: "1.2vw",
@@ -184,33 +219,43 @@ export default function PrimarySearchAppBar() {
             }}
           >
             Myshop
-          </Typography>
-          
-          
+          </Typography></Link>
+
           <Search>
             <SearchIconWrapper>
-              <SearchIcon sx={{color:"black"}} />
+              <SearchIcon sx={{ color: "black", cursor: "pointer" }} />
             </SearchIconWrapper>
             <StyledInputBase
-            sx={{color:"black"}}
+              sx={{ color: "black" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onKeyUp={search_products}
             />
           </Search>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label=" new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <ShoppingCartIcon sx={{color: "#FBB03B"}} />
-              </Badge>
+              <Link className="link" to="/">
+                <HomeIcon sx={{ color: "#FBB03B" }} />
+              </Link>
             </IconButton>
             <IconButton
+              size="large"
+              aria-label="new notifications"
+              color="inherit"
+            >
+              <Badge badgeContent={props.cartcount} color="error">
+                <Link className="link" to="/cart">
+                  <ShoppingCartIcon sx={{ color: "#FBB03B" }} />
+                </Link>
+              </Badge>
+            </IconButton>
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -219,8 +264,8 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle sx={{color: "#FBB03B"}} />
-            </IconButton>
+              <AccountCircle sx={{ color: "#FBB03B" }} />
+            </IconButton> */}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -230,6 +275,7 @@ export default function PrimarySearchAppBar() {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
+              sx={{ backgroundColor: "#FBB03B" }}
             >
               <MoreIcon />
             </IconButton>
