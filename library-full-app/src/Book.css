@@ -2,13 +2,15 @@
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
-    margin: 0px 5vw;
+    padding: 4% 10%;
+    /* margin: 0px 5vw; */
     /* align-items: center; */
     gap:1.2rem;
-    width:90vw;
-    border-radius: 10px;
+    border: 1px solid #eee;
+    /* width:90vw; */
+    /* border-radius: 10px; */
     box-shadow: 8px 8px 8px 8px gray;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 .left{
    

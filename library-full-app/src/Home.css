@@ -12,9 +12,11 @@
     justify-content: center;
 }
 .addimg{
+    border-radius: 20vw;
     width: 400px;
 }
 .content{
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,6 +72,7 @@
         width: 40vw;
         height: 30vw;
     }
+   
     .content{
         
         display: flex;

@@ -13,6 +13,7 @@ const CardBox = (props) => {
       >
         <Card
           sx={{
+            backgroundColor:props.cardbg,
             cursor: "pointer",
             display: "flex",
             width: 400,
@@ -36,10 +37,10 @@ const CardBox = (props) => {
 
           <Box sx={{ width: "200px" }}>
             <CardHeader />
-            <p style={{ fontSize: "15px", fontWeight: "bold" }}>
+            <p style={{ fontSize: "15px", fontWeight: "bold",color:props.fonts }}>
               {props.title}
             </p>
-            <p style={{ marginBottom: 6 }}>Author name: {props.author_name}</p>
+            <p style={{ marginBottom: 6,color:props.fonts }}>Author name: {props.author_name}</p>
           </Box>
         </Card>
       </Link>

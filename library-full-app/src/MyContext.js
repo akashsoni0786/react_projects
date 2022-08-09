@@ -5,6 +5,13 @@ const MyContext = (props) => {
   const [search, setSearch] = React.useState("Rama");
   const [isLoading, setIsLoading] = useState(false);
   const [searchicon,setSearchicon] = useState("0");
+  const [darkmode,setDarkMode] = React.useState("white");
+  const [bgs,setBgs] = React.useState("white");
+  const [fonts,setFonts] = React.useState("black");
+  const [org_fonts,setOrgFonts] = React.useState("orange");
+  const [bgslib,setBgslib] = React.useState("white");
+
+
   React.useEffect(() => {
     const fetchallbookApi = async () => {
       setIsLoading(true);
@@ -36,7 +43,7 @@ const MyContext = (props) => {
   }, [search]);
   return (
     <contextname.Provider
-      value={[alldata, search, setSearch, setAllDate, isLoading, setIsLoading,searchicon,setSearchicon]}
+      value={{alldata:alldata, search:search, setSearch:setSearch, setAllDate:setAllDate, isLoading:isLoading, setIsLoading,searchicon:searchicon,setSearchicon:setSearchicon,darkmode:darkmode,setDarkMode:setDarkMode,bgs:bgs,setBgs:setBgs,fonts:fonts,setFonts:setFonts,org_fonts:org_fonts,setOrgFonts:setOrgFonts,bgslib:bgslib,setBgslib:setBgslib}}
     >
       {props.children}
     </contextname.Provider>

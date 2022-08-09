@@ -11,7 +11,7 @@ import Library from "./Library";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { contextname } from "./MyContext";
-import { Tooltip } from "@mui/material";
+import { FormControlLabel, FormGroup, Switch, Tooltip } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,14 +55,37 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const label = { inputProps: { 'aria-label': 'Switch demo' } };
+  const contxt = React.useContext(contextname);
+  const [navbg,setNavBg] = React.useState('white');
+
+  const mode =(e)=>{
+    if(e.target.checked)
+    {
+      contxt.setDarkMode("black");
+      contxt.setBgs("black");
+      contxt.setFonts("white");
+      contxt.setOrgFonts("orange");
+      contxt.setBgslib('gray');
+    }
+    else{
+      contxt.setDarkMode("white");
+      contxt.setBgs("white");
+      contxt.setFonts("black");
+      contxt.setOrgFonts("orange");
+      contxt.setBgslib("white");
+    }
+
+  }
+ 
   return (
     <>
       <Box sx={{ flexGrow: 1, backgroundColor: "none" }}>
         <AppBar
           elevation={0}
           position="static"
-          sx={{ backgroundColor: "transparent" }}
+          sx={{ backgroundColor: props.navbg }}
         >
           <Toolbar sx={{display:"flex",justifyContent:"space-between"}}>
             <Box sx={{display:"flex",justifyContent:"start"}}>
@@ -97,8 +120,8 @@ export default function Navbar() {
               </Typography>
             </Link>
             </Box>
-              
-            <Link to="/library">
+              <Box sx={{display:"flex",justifyContent:"end"}}>
+              <Link to="/library">
               <Tooltip title="Search book  here.....">
                 <IconButton>
                   <SearchIcon
@@ -106,12 +129,15 @@ export default function Navbar() {
                       color: "orange",
                       fontWeight: "bolder",
                       fontSize: "45px",
-                      // marginLeft: "30px",
                     }}
                   />
                 </IconButton>
               </Tooltip>
             </Link>
+            
+              <Switch onChange={mode}  color="warning" />
+              </Box>
+            
           </Toolbar>
         </AppBar>
       </Box>

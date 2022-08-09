@@ -14,29 +14,24 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import CardBox from "./CardBox";
-const Library = () => {
+const Library = (props) => {
   const [inputbook, setInputBook] = React.useState("");
-  const [alldata, search, setSearch, setAllDate, isLoading, setIsLoading] =
-    React.useContext(contextname);
+  const contxt = React.useContext(contextname);
     const [txt,setTxt] = React.useState("")
-  console.log(alldata);
+  console.log(contxt.alldata);
   const enteredbook = () => {
     setTxt("Total result : ")
-    setAllDate([]);
-    setSearch(inputbook);
-    console.log(alldata);
+    contxt.setAllDate([]);
+    contxt.setSearch(inputbook);
+    console.log(contxt.alldata);
   };
   React.useEffect(()=>{
-   
-      setSearch("Rama")
+    contxt.setSearch("Rama")
       setTxt("Top trendings :")
-    
-   
-    
   },[]);
   return (
     <div>
-      <div className="fullpage">
+      <div className="fullpage" style={{backgroundColor:props.bglib}}>
         <Box sx={{ display: "flex", justifyContent: "Center", width: "100%" }}>
           <Box
             component="form"
@@ -66,9 +61,9 @@ const Library = () => {
             Search
           </Button>
         </Box>
-        {alldata != [] ? (
+        {contxt.alldata != [] ? (
           <>
-          <Box sx={{textAlign:"center",fontSize:"30px"}}>{txt}  {alldata.length != 0 ? (alldata.length):("No found")}</Box>
+          <Box sx={{textAlign:"center",fontSize:"30px",color:props.fnt}}>{txt}  {contxt.alldata.length != 0 ? (contxt.alldata.length):("No found")}</Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             
             <Box
@@ -78,10 +73,12 @@ const Library = () => {
                 flexWrap: "wrap",
               }}
             >
-              {isLoading && <><Loader /><br /></>}
-              {alldata.map((i) => {
+              {contxt.isLoading && <><Loader /><br /></>}
+              {contxt.alldata.map((i) => {
                 return (
                   <CardBox
+                  cardbg={props.cbg}
+                  fonts={props.fnt}
                     data={i}
                     cover_i={i.cover_i}
                     title={i.title}
