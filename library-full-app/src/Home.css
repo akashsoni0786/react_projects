@@ -1,0 +1,86 @@
+.blocklayer{
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.blocklayerfirst{
+    /* margin-top: -250px; */
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.addimg{
+    width: 400px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headingcontent{
+    color: orange;
+    font-size: 35px;
+    font-weight: bolder;
+}
+.head_para_content{
+    font-size: 20px;
+}
+.carouselimg{
+    margin-top: 0px;
+    width: 100%;
+}
+.welcome{
+    font-family: 'Satisfy', cursive;
+    font-size: 2vw;
+    color: black;
+    font-weight: bold;
+    font-size: 2.5vw;}
+.thought{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    padding: 15px;
+   
+}
+.carouselwithwelcome{
+    height: 500px;
+    display: flex;
+    justify-content: left;
+    background-image: url("https://howtotyl.com/wp-content/uploads/2016/10/geshe-kelsang-gyatso-01.jpg");
+    background-size: cover;
+}
+@media screen and (max-width:700px) {
+    .blocklayerfirst{
+        /* margin-top: -30px; */
+        padding: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .blocklayer{
+        padding: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .addimg{
+        width: 40vw;
+        height: 30vw;
+    }
+    .content{
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .headingcontent{
+        color: orange;
+        font-size: 3vw;
+        font-weight: bolder;
+    }
+    .head_para_content{
+        font-size: 2.3vw;    }
+}

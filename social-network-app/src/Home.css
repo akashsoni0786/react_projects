@@ -1,0 +1,33 @@
+
+.postbox{
+    padding: 15px;
+    box-shadow: 1px 10px 10px 10px gray;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-radius: 5px;
+    margin: 20px 2.5%;
+}
+.user_pic_post{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.post_username{
+    margin: 15px 5px;
+    font-weight: bolder;
+}
+.post_pic{
+    /* height:30rem; */
+}
+.postcontnt{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.upperarea{
+    display: flex;
+    justify-content: space-between;
+}
