@@ -21,7 +21,21 @@ const Library = (props) => {
   const contxt = React.useContext(contextname);
     const [txt,setTxt] = React.useState("")
   console.log(contxt.alldata);
-  const enteredbook = () => {
+  const enteredbook = (e) => {
+    if(e.target.key=='Enter'){
+      if(inputbook===''){
+        alert("Search field is empty");
+      }
+      else{
+        setTxt("Total result : ")
+        contxt.setAllDate([]);
+        contxt.setSearch(inputbook);
+        console.log(contxt.alldata);
+      }
+    }
+  }
+
+  const entrbook2 = ()=>{
     if(inputbook===''){
       alert("Search field is empty");
     }
@@ -31,8 +45,7 @@ const Library = (props) => {
       contxt.setSearch(inputbook);
       console.log(contxt.alldata);
     }
-    
-  };
+  }
   React.useEffect(()=>{
     contxt.setSearch("Rama")
       setTxt("Top trendings :")
@@ -52,6 +65,7 @@ const Library = (props) => {
           >
             
             <TextField
+            onKeyPress={enteredbook}
               sx={{ color: "orange",width:"60%" }}
               label="Search"
               variant="standard"
@@ -64,7 +78,8 @@ const Library = (props) => {
               backgroundColor: "orange",
               color: "white",
             }}
-            onClick={enteredbook}
+            
+            onClick={entrbook2}
             variant="contained"
           >
             Search

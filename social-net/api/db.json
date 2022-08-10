@@ -1,17 +1,45 @@
 {
-    "users": [
-        {"id":"8ad0a5b1-c003-4aa1-a274-ae962a68911e", "name": "Akash", "mail": "akash@co.in", "pass": "1234" },
-        {"id":"a507db41-7159-4a89-967f-42bb3f479ea3", "name": "kamal", "mail": "nayan.co.in", "pass": "1234" }
-
-      ],
-
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "Akash" }
-    ],
-
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-
-    "profile": { "name": "typicode" }
+  "users": [
+    {
+      "id": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "name": "Akash",
+      "mail": "akash@co.in",
+      "pass": "1234"
+    },
+    {
+      "id": "a507db41-7159-4a89-967f-42bb3f479ea3",
+      "name": "kamal",
+      "mail": "nayan.co.in",
+      "pass": "1234"
+    },
+    {
+      "id": "bb88893c-9c91-4dc8-b7a8-99373f059bb5",
+      "name": "asd",
+      "mail": "111",
+      "pass": "111"
+    },
+    {
+      "id": "dfcd334f-5b76-48de-bb8b-6cfea6c3d281",
+      "name": "Ashutosh",
+      "mail": "ashu@gmail.com",
+      "pass": "111"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "Akash"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
   }
+}
