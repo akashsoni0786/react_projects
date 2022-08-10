@@ -1,24 +1,3 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom';
-// import './App.css';
-
-// const Nav = (props) => {
-//   return (
-//     <div className='nav'>
-
-//         <div className='logofinal'>
-//           MyShop
-//         </div>
-//         <ul>
-//             <li><Link className='link' to="/"><b>Home</b></Link></li>
-//             <li><Link className='link'to="/cart"><b>Cart ({props.cartcount})</b></Link></li>
-//             <li><Link className='link'to="/contact"><b>Contact</b></Link></li>
-//         </ul>
-//     </div>
-//   )
-// }
-
-// export default Nav
 
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
@@ -37,8 +16,8 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
-import { products } from "./Data";
-import {contxtname} from "./Contxt";
+import { contextname } from "./Context";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -82,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar(props) {
   const navigate = useNavigate();
   var search_val = [];
-  const contxtobj = React.useContext(contxtname);
+  const contxtobj = React.useContext(contextname);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -168,7 +147,7 @@ export default function PrimarySearchAppBar(props) {
           <p>Cart</p>
         </Link>
       </MenuItem>
-      {/* <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -179,20 +158,20 @@ export default function PrimarySearchAppBar(props) {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem> */}
+      </MenuItem>
     </Menu>
   );
-  const search_products = (e) => {
-    navigate("/searched");
-    var searchtext = e.target.value;
-    products.map((i) => {
-      if (i.name.includes(searchtext)) {
-        search_val = [...search_val, i];
-        console.log(search_val)
-        contxtobj.setSearch(search_val);
-      }
-    });
-  };
+//   const search_products = (e) => {
+//     navigate("/searched");
+//     var searchtext = e.target.value;
+//     products.map((i) => {
+//       if (i.name.includes(searchtext)) {
+//         search_val = [...search_val, i];
+//         console.log(search_val)
+//         contxtobj.setSearch(search_val);
+//       }
+//     });
+//   };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -206,21 +185,9 @@ export default function PrimarySearchAppBar(props) {
         }}
       >
         <Toolbar>
-        <Link className="link" to="/"><Typography
-            aria-label="open drawer"
-            sx={{
-              fontWeight: "1000",
-              display: { xs: "block", sm: "block" },
-              fontFamily: "'Satisfy', cursive",
-              borderRadius: "5px",
-              padding: "1.2vw",
-              backgroundColor: "#FBB03B",
-              margin: "10px",
-            }}
-          >
-            Myshop
-          </Typography></Link>
-
+        <Link className="link" to="/">
+        <img style={{width:"60px"}} alt='' src='https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg'/>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon sx={{ color: "black", cursor: "pointer" }} />
@@ -229,7 +196,7 @@ export default function PrimarySearchAppBar(props) {
               sx={{ color: "black" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
-              onKeyUp={search_products}
+            //   onKeyUp={search_products}
             />
           </Search>
 
@@ -241,7 +208,7 @@ export default function PrimarySearchAppBar(props) {
               color="inherit"
             >
               <Link className="link" to="/">
-                <HomeIcon sx={{ color: "#FBB03B" }} />
+                <HomeIcon sx={{ color: "purple" }} />
               </Link>
             </IconButton>
             <IconButton
@@ -251,11 +218,11 @@ export default function PrimarySearchAppBar(props) {
             >
               <Badge badgeContent={props.cartcount} color="error">
                 <Link className="link" to="/cart">
-                  <ShoppingCartIcon sx={{ color: "#FBB03B" }} />
+                  <ShoppingCartIcon sx={{ color: "green" }} />
                 </Link>
               </Badge>
             </IconButton>
-            {/* <IconButton
+            <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -264,8 +231,8 @@ export default function PrimarySearchAppBar(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle sx={{ color: "#FBB03B" }} />
-            </IconButton> */}
+              <AccountCircle sx={{ color: "orange" }} />
+            </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

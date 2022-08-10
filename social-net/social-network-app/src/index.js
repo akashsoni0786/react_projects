@@ -6,11 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import SignIn from './Login';
 import Signup from './Signup';
 import Home from './Home';
+import Context from './Context';
+import PrimarySearchAppBar from './Navbar';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <Context>
+      <BrowserRouter>
+      <App />
+
+      </BrowserRouter>
+    </Context>
   </React.StrictMode>
 );
 

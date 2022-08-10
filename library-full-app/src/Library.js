@@ -10,6 +10,8 @@ import {
   Card,
   CardHeader,
   CircularProgress,
+  FormControl,
+  FormControlLabel,
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -20,17 +22,23 @@ const Library = (props) => {
     const [txt,setTxt] = React.useState("")
   console.log(contxt.alldata);
   const enteredbook = () => {
-    setTxt("Total result : ")
-    contxt.setAllDate([]);
-    contxt.setSearch(inputbook);
-    console.log(contxt.alldata);
+    if(inputbook===''){
+      alert("Search field is empty");
+    }
+    else{
+      setTxt("Total result : ")
+      contxt.setAllDate([]);
+      contxt.setSearch(inputbook);
+      console.log(contxt.alldata);
+    }
+    
   };
   React.useEffect(()=>{
     contxt.setSearch("Rama")
       setTxt("Top trendings :")
   },[]);
   return (
-    <div>
+    <div style={{backgroundColor:props.bglib,height:"100vh"}}>
       <div className="fullpage" style={{backgroundColor:props.bglib}}>
         <Box sx={{ display: "flex", justifyContent: "Center", width: "100%" }}>
           <Box
@@ -42,6 +50,7 @@ const Library = (props) => {
             autoComplete="off"
             onChange={(e) => setInputBook(e.target.value)}
           >
+            
             <TextField
               sx={{ color: "orange",width:"60%" }}
               label="Search"
@@ -60,6 +69,7 @@ const Library = (props) => {
           >
             Search
           </Button>
+       
         </Box>
         {contxt.alldata != [] ? (
           <>

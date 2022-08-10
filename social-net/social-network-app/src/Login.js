@@ -12,23 +12,30 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { contextname } from './Context';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://facebook.com/">
-      Firebook 
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://facebook.com/">
+        Firebook 
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 
 const theme = createTheme();
 
-export default function Signup() {
+export default function SignIn() {
+  const navigate = useNavigate();
+
+  const contxt = React.useContext(contextname);
+  // const [done,setDone] = React.useState(0);
+  var done=0;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,6 +43,25 @@ export default function Signup() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    if(data.get('email')===''||data.get('password')===''){
+      alert("All fields are mendatory");
+    }
+    else{
+      contxt.users.map(i=>{
+        if(data.get('password') === i.pass && data.get('email') === i.mail)
+        {
+            contxt.setLogin(i.name);
+            console.log(i.name);
+            done =1;
+            navigate('/home');
+        }
+      })
+      if(done === 0){
+          alert("Invalid credentials");
+      }
+      
+    }
   };
 
   return (
@@ -53,22 +79,11 @@ export default function Signup() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             {/* <LockOutlinedIcon /> */}
             <img style={{width:"60px"}} alt='' src='https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg'/>
-
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Enter name"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
             <TextField
               margin="normal"
               required
@@ -89,37 +104,27 @@ export default function Signup() {
               id="password"
               autoComplete="current-password"
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Confirm Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            {/* <FormControlLabel
+            <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            /> */}
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign In
             </Button>
             <Grid container>
-              {/* <Grid item xs>
+              <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid> */}
+              </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Already have an account! Sign In"}
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>

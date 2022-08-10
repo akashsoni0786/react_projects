@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { contextname } from './Context';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -29,6 +31,11 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
+  const contxt = React.useContext(contextname);
+  // const [done,setDone] = React.useState(0);
+  var done=0;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,6 +43,25 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    if(data.get('email')===''||data.get('password')===''){
+      alert("All fields are mendatory");
+    }
+    else{
+      contxt.users.map(i=>{
+        if(data.get('password') === i.pass && data.get('email') === i.mail)
+        {
+            contxt.setLogin(i.name);
+            console.log(i.name);
+            done =1;
+            navigate('/home');
+        }
+      })
+      if(done === 0){
+          alert("Invalid credentials");
+      }
+      
+    }
   };
 
   return (
