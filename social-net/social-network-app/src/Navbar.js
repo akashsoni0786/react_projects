@@ -17,7 +17,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
 import { contextname } from "./Context";
-
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { Tooltip } from "@mui/material";
+import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -128,7 +130,7 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem>
         <IconButton size="large" aria-label="cart" color="inherit">
           <Link className="link" to="/">
-            <HomeIcon />
+            <AttachFileIcon />
           </Link>
         </IconButton>
         <Link className="link" to="/">
@@ -185,7 +187,7 @@ export default function PrimarySearchAppBar(props) {
         }}
       >
         <Toolbar>
-        <Link className="link" to="/">
+        <Link className="link" to="/home">
         <img style={{width:"60px"}} alt='' src='https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg'/>
           </Link>
           <Search>
@@ -202,23 +204,25 @@ export default function PrimarySearchAppBar(props) {
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Tooltip title="Attact your post">
             <IconButton
               size="large"
               aria-label=" new notifications"
               color="inherit"
             >
-              <Link className="link" to="/">
-                <HomeIcon sx={{ color: "purple" }} />
+              <Link className="link" to="/addpost">
+                <AttachFileIcon sx={{ color: "purple" }} />
               </Link>
             </IconButton>
+            </Tooltip>
             <IconButton
               size="large"
               aria-label="new notifications"
               color="inherit"
             >
               <Badge badgeContent={props.cartcount} color="error">
-                <Link className="link" to="/cart">
-                  <ShoppingCartIcon sx={{ color: "green" }} />
+                <Link className="link" to="/mypost">
+                  <VideoCameraBackIcon sx={{ color: "green" }} />
                 </Link>
               </Badge>
             </IconButton>

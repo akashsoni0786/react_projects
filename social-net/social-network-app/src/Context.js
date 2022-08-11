@@ -5,14 +5,19 @@ export const contextname = React.createContext();
 const Context = (props) => {
   const [users, setUsers] = React.useState([
   ]);
+  const [posts, setPosts] = React.useState([
+  ]);
   const [login, setLogin] = React.useState("");
 
   React.useEffect(()=>{
     const ax = async ()=>{
       try{
-        let response = await apicall.get("/users")
-        console.log(response.data)
-        setUsers(response.data)
+        let allusers = await apicall.get("/users");
+        let allposts = await apicall.get("/posts")
+        console.log(allusers.data)
+        console.log(allposts.data)
+        setUsers(allusers.data);
+        setPosts(allposts.data);
       }
       catch(e){
         console.log(e)
@@ -21,7 +26,7 @@ const Context = (props) => {
    ax();
     
   },[])
-  console.log(users)
+  
     
   return (
     <contextname.Provider
@@ -30,6 +35,8 @@ const Context = (props) => {
         setUsers: setUsers,
         login: login,
         setLogin: setLogin,
+        posts:posts, 
+        setPosts:setPosts
       }}
     >
       {props.children}
