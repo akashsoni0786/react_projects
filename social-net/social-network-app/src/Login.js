@@ -52,6 +52,7 @@ export default function SignIn() {
         if(data.get('password') === i.pass && data.get('email') === i.mail)
         {
             contxt.setLogin(i.name);
+            contxt.setLoginid(i.id);
             console.log(i.name);
             done =1;
             navigate('/home');

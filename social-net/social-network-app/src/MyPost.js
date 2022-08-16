@@ -5,7 +5,6 @@ import Postbox from './Postbox';
 
 const MyPost = () => {
   const contxt = React.useContext(contextname);
-
     return (
       contxt.login && 
         <div className="homepage">

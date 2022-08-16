@@ -23,6 +23,7 @@ import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
 import { contextname } from "./Context";
 import Search from "@mui/icons-material/Search";
+import MyPostbox from "./MyPostBox";
 
 const style = {
   position: "absolute",
@@ -60,20 +61,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 const Home = () => {
-  const [opens, setOpens] = React.useState(0);
- 
-  const [video, setPostVideo] = React.useState([]);
   const contxt = React.useContext(contextname);
-  const inputRef = React.useRef();
-  const [source, setSource] = React.useState();
-  
-
   return (
     contxt.login && 
     <div className="homepage">
-      {contxt.posts.map((i) => (
-        <Postbox username={i.author} text={i.content} pic={i.contentimg} />
-      ))}
+      {contxt.posts.map((i) => {
+       
+        return <Postbox username={i.author} feeling={i.title} text={i.content} pic={i.contentimg} pid={i.id} />
+      })}
     </div>
   );
 };

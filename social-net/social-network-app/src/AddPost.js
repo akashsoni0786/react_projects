@@ -24,24 +24,28 @@ const AddPost = () => {
     if (title === "") {
       alert("Title is mendatory");
     } else {
-      if (textcontent !== "") {
-        alert("Text field is empty");
-      } else {
+      if (textcontent === "" && image === "") {
+        alert("Write text or choose image");
+      } 
+      
+      else {
         console.log(image);
-        let a = {
+        let a = 
+        {
           id: uid(),
           title: title,
           author: contxt.login,
           contentimg: image,
           content: textcontent,
         };
-
-        console.log(a);
-        try {
+        try
+        {
           apicall.post("/posts", a);
-          let allposts = await apicall.get("/posts");
-          contxt.setPosts(allposts.data);
-        } catch (e) {
+          await apicall.get("/posts");
+          // contxt.setPosts(allposts.data);
+        } 
+        catch (e) 
+        {
           console.log(e);
         }
       }

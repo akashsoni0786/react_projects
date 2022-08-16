@@ -20,6 +20,9 @@ import { contextname } from "./Context";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { Tooltip } from "@mui/material";
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
+import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -130,10 +133,10 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem>
         <IconButton size="large" aria-label="cart" color="inherit">
           <Link className="link" to="/">
-            <AttachFileIcon />
+            <OtherHousesIcon />
           </Link>
         </IconButton>
-        <Link className="link" to="/">
+        <Link className="link" to="/home">
           <p>Home</p>
         </Link>
       </MenuItem>
@@ -141,12 +144,12 @@ export default function PrimarySearchAppBar(props) {
         <IconButton size="large" aria-label="cart" color="inherit">
           <Badge badgeContent={props.cartcount} color="error">
             <Link className="link" to="/cart">
-              <ShoppingCartIcon />
+              <ExtensionIcon />
             </Link>
           </Badge>
         </IconButton>
-        <Link className="link" to="/cart">
-          <p>Cart</p>
+        <Link className="link" to="/mypost">
+          <p>My Posts</p>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
@@ -157,9 +160,9 @@ export default function PrimarySearchAppBar(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+           <DataSaverOnIcon />
         </IconButton>
-        <p>Profile</p>
+        <p>Add posts</p>
       </MenuItem>
     </Menu>
   );
@@ -203,7 +206,7 @@ export default function PrimarySearchAppBar(props) {
           </Search>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          {/* <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <Tooltip title="Attact your post">
             <IconButton
               size="large"
@@ -211,7 +214,8 @@ export default function PrimarySearchAppBar(props) {
               color="inherit"
             >
               <Link className="link" to="/addpost">
-                <AttachFileIcon sx={{ color: "purple" }} />
+               
+                <DataSaverOnIcon sx={{ color: "purple" }} />
               </Link>
             </IconButton>
             </Tooltip>
@@ -222,7 +226,8 @@ export default function PrimarySearchAppBar(props) {
             >
               <Badge badgeContent={props.cartcount} color="error">
                 <Link className="link" to="/mypost">
-                  <VideoCameraBackIcon sx={{ color: "green" }} />
+                  <ExtensionIcon sx={{ color: "green" }} />
+             
                 </Link>
               </Badge>
             </IconButton>
@@ -250,7 +255,7 @@ export default function PrimarySearchAppBar(props) {
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

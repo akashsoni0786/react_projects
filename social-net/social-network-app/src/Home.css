@@ -63,7 +63,14 @@
     height: 5vh;
     border-radius: 5px;
 }
-
+.posttitledit{
+    padding: 10px;
+    font-size: 15px;
+    width: 90%;
+    border: 1px solid gray;
+    height: 5vh;
+    border-radius: 5px;
+}
 @media screen and (max-width:600px) {
     .posttitle{
         padding: 5px;

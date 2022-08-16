@@ -61,37 +61,235 @@
       "content": "werwerwerwer"
     },
     {
-      "id": "39687803-5b01-4c5a-8355-7b3ae7620e97",
       "title": "Lorem ipsum",
       "author": "Akash",
-      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n"
+      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose.akash \n\n",
+      "id": "deaeb108-a05e-4edc-9666-aad925c92015"
     },
     {
-      "id": "deaeb108-a05e-4edc-9666-aad925c92015",
-      "title": "Lorem ipsum",
+      "id": "424a9ae0-efd7-40e2-be6f-67b9611e542a",
+      "title": "my first post with Aashi",
       "author": "Akash",
-      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n"
+      "contentimg": "https://1fid.com/wp-content/uploads/2022/03/cute-girl-dp-image-2-1024x1024.jpg"
     },
     {
-      "id": "6e99e9a1-3dcd-4433-91d2-0e8e3c3d0e3b",
-      "title": "Lorem ipsum",
+      "id": "a6e43b77-d675-489c-b77d-4190ff55dd1d",
+      "title": "my second post with Aarohi",
       "author": "Akash",
-      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n"
+      "contentimg": "https://i.pinimg.com/736x/1a/ff/61/1aff6198920bf5a580ff1f37c8909c59.jpg",
+      "content": ""
     },
     {
-      "id": "f6f9b8b4-5c4f-4946-9ab2-d3adfc59de7d",
+      "id": "2f55cb3d-a66c-4156-8814-a4983876c240",
+      "title": "my lovely post with Sanjana",
       "author": "Akash",
-      "contentimg": "https://www.tellychakkar.com/sites/www.tellychakkar.com/files/images/story/2020/02/24/beautiful_0.jpg"
+      "contentimg": "https://blogger.googleusercontent.com/img/a/AVvXsEgHGP8rMEc8eHYPciSVOjfRzsL-yqq_knUrfss7s_spus43RR2tXK5vfNkEowMBr7YPPURg1-hfRIRKPabUrJtFj0uhMM5f3nHPX16F2ALfm01Nb5ozCM6EDlU8qdSGTTKDNeye2-3kNOUuhwiRpUclqL2p1mkT6j_msp8F_200lbD_L_IdFtvSAcYp=w512-h640",
+      "content": ""
+    },
+    {
+      "id": "2c6b48fd-6201-4726-aab1-0173a74d4ee3",
+      "title": "my lovely post with Sanjana",
+      "author": "Akash",
+      "contentimg": "https://i.pinimg.com/736x/fd/72/44/fd724467e420aeed9df267cb76c4463e.jpg",
+      "content": ""
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "commentid": "1b042768-a339-448f-a585-07c9b598a1cc",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "deaeb108-a05e-4edc-9666-aad925c92015",
+      "username": "Akash",
+      "commentarea": "dfgvdgf",
+      "id": 4
+    },
+    {
+      "commentid": "49f077f2-2b46-4df4-8008-669fc66fa6ec",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "username": "Akash",
+      "postid": "deaeb108-a05e-4edc-9666-aad925c92015",
+      "commentarea": "23423525",
+      "id": 5
+    },
+    {
+      "commentid": "eccfbf1e-fd2e-4b93-b506-f23661436032",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "424a9ae0-efd7-40e2-be6f-67b9611e542a",
+      "commentarea": "12128989",
+      "id": 9
+    },
+    {
+      "commentid": "36bd0e44-3270-4dca-aa25-9ae85585ea40",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "424a9ae0-efd7-40e2-be6f-67b9611e542a",
+      "username": "Akash",
+      "commentarea": "45678",
+      "id": 11
+    },
+    {
+      "commentid": "20de146f-706d-4553-a463-dcdb4c2fee9f",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "",
+      "username": "Akash",
+      "commentarea": "123",
+      "id": 12
+    },
+    {
+      "commentid": "c6a3c11d-5a93-4b15-9742-5ec7b15fbedb",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "",
+      "username": "Akash",
+      "commentarea": "90009",
+      "id": 13
+    },
+    {
+      "commentid": "f2eeb877-93f3-46f1-89ca-d5fd44d21bc1",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 14
+    },
+    {
+      "commentid": "add362d8-8b1a-4f67-bebc-9e2e587219ad",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 15
+    },
+    {
+      "commentid": "587bab36-5ffb-4cfc-853c-732b8d06f140",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 16
+    },
+    {
+      "commentid": "be69aef1-c080-4569-8ce7-7954fc7e7d7d",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 17
+    },
+    {
+      "commentid": "61b12abd-7d9f-43af-aad0-72e4d90b2abf",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 18
+    },
+    {
+      "commentid": "4657f5d0-33c2-4c20-b867-2d81d3ac0e17",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 19
+    },
+    {
+      "commentid": "4b20e866-9f12-4013-85e5-9a3ab7b4ec3d",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 20
+    },
+    {
+      "commentid": "4f4cede4-5108-4adf-afcd-ff24003473f9",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 21
+    },
+    {
+      "commentid": "ae841df0-5dc7-43a1-8a12-f42bc4c1697c",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 22
+    },
+    {
+      "commentid": "fb1bf262-f70b-4efc-bf1f-9aa8f5fcc177",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 23
+    },
+    {
+      "commentid": "1598c60b-08a0-4d9e-a355-ae29c70ada5f",
+      "uid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "usrname": "Akash",
+      "postid": "1",
+      "username": "Akash",
+      "commentarea": "1234567",
+      "id": 24
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "likes": [
+    {
+      "id": "38ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": 3,
+      "liked": true
+    },
+    {
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": "deaeb108-a05e-4edc-9666-aad925c92015",
+      "liked": false,
+      "id": "deaeb108-a05e-4edc-9666-aad925c920158ad0a5b1-c003-4aa1-a274-ae962a68911e"
+    },
+    {
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": "fe826e8a-097a-4522-88bb-46c12e9ebf02",
+      "liked": false,
+      "id": "fe826e8a-097a-4522-88bb-46c12e9ebf028ad0a5b1-c003-4aa1-a274-ae962a68911e"
+    },
+    {
+      "id": "18efaebb-d692-42ed-8195-2a33cb14136f8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": "18efaebb-d692-42ed-8195-2a33cb14136f",
+      "liked": true
+    },
+    {
+      "id": "18ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": 1,
+      "liked": true
+    },
+    {
+      "id": "48ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": 4,
+      "liked": true
+    },
+    {
+      "id": "2f55cb3d-a66c-4156-8814-a4983876c2408ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "userid": "8ad0a5b1-c003-4aa1-a274-ae962a68911e",
+      "postid": "2f55cb3d-a66c-4156-8814-a4983876c240",
+      "liked": true
+    }
+  ]
 }
