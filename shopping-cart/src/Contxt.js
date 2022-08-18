@@ -4,6 +4,7 @@ const Contxt = (props) => {
   const [login,setLogin] = React.useState('');
   const [bgs,setBgs] = React.useState('white');
   const [bgsboxs,setBgsBox] = React.useState('white');
+  const [searchtxts,setSearchtxts] = React.useState('Top searched ');
   const [txts,setTxts] = React.useState('black');
   const [search, setSearch] = React.useState([
     {
@@ -46,7 +47,9 @@ const Contxt = (props) => {
       bgsboxs:bgsboxs,
       setBgsBox:setBgsBox,
       txts:txts,
-      setTxts:setTxts }
+      setTxts:setTxts,
+      searchtxts:searchtxts,
+      setSearchtxts:setSearchtxts }
       }>
       {props.children}
     </contxtname.Provider>

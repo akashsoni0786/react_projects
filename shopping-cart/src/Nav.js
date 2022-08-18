@@ -210,6 +210,7 @@ const changemode=(e)=>{
     </Menu>
   );
   const search_products = (e) => {
+    contxtobj.setSearchtxts('Searched ');
     navigate("/searched");
     var searchtext = e.target.value;
     products.map((i) => {
