@@ -15,8 +15,11 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
-import { contextname } from "./Context";
-
+import { products } from "./Data";
+import {contxtname} from "./Contxt";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Switch, Tooltip } from "@mui/material";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -60,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar(props) {
   const navigate = useNavigate();
   var search_val = [];
-  const contxtobj = React.useContext(contextname);
+  const contxtobj = React.useContext(contxtname);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -68,6 +71,26 @@ export default function PrimarySearchAppBar(props) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const logoutbtn=()=>{
+    if(window.confirm("Do you really want to logout!")){
+      contxtobj.setLogin("")
+    }
+  }
+const changemode=(e)=>{
+  if(e.target.checked){
+    contxtobj.setBgs("#393E46");
+    contxtobj.setTxts("white");
+    contxtobj.setBgsBox("#222831");
+  }
+  else{
+    contxtobj.setBgs("white");
+    contxtobj.setTxts("black");
+    contxtobj.setBgsBox("white");
+  }
+}
+  const loginbtn=()=>{
+    navigate('/login');
+  }
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -102,8 +125,8 @@ export default function PrimarySearchAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      
+      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
     </Menu>
   );
 
@@ -146,7 +169,21 @@ export default function PrimarySearchAppBar(props) {
           <p>Cart</p>
         </Link>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      
+      {contxtobj.login === ''?
+      <MenuItem onClick={loginbtn}>
+      <IconButton
+        size="large"
+        aria-label="account of current user"
+        aria-controls="primary-search-account-menu"
+        aria-haspopup="true"
+        color="inherit"
+      >
+        <PersonOutlineIcon/>
+      </IconButton>
+      <p>Login</p>
+    </MenuItem>:
+      <MenuItem onClick={logoutbtn}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -154,89 +191,146 @@ export default function PrimarySearchAppBar(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <LogoutIcon />
         </IconButton>
-        <p>Profile</p>
+        <p>Logout</p>
+      </MenuItem>}
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+         <Switch onChange={changemode}  color="default" />
+        </IconButton>
+        <p>Mode</p>
       </MenuItem>
     </Menu>
   );
-  //   const search_products = (e) => {
-  //     navigate("/searched");
-  //     var searchtext = e.target.value;
-  //     products.map((i) => {
-  //       if (i.name.includes(searchtext)) {
-  //         search_val = [...search_val, i];
-  //         console.log(search_val)
-  //         contxtobj.setSearch(search_val);
-  //       }
-  //     });
-  //   };
+  const search_products = (e) => {
+    navigate("/searched");
+    var searchtext = e.target.value;
+    products.map((i) => {
+      if (i.name.toLowerCase().includes(searchtext)) {
+        search_val = [...search_val, i];
+        console.log(search_val)
+        contxtobj.setSearch(search_val);
+      }
+    });
+  };
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="fixed"
         sx={{
           position: "fixed",
-          backgroundColor: "white",
+          backgroundColor: contxtobj.bgs,
           overflow: "hidden",
           top: "0",
           marginBottom: "70px",
         }}
       >
         <Toolbar>
-          <Link className="link" to="/">
-            <img
-              style={{ width: "60px" }}
-              alt=""
-              src="https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg"
-            />
-          </Link>
+        <Link className="link" to="/"><Typography
+            aria-label="open drawer"
+            sx={{
+              fontWeight: "1000",
+              display: { xs: "block", sm: "block" },
+              fontFamily: "'Satisfy', cursive",
+              borderRadius: "5px",
+              padding: "1.2vw",
+              backgroundColor: "#FBB03B",
+              margin: "10px",
+            }}
+          >
+            Myshop
+          </Typography></Link>
+
           <Search>
             <SearchIconWrapper>
-              <SearchIcon sx={{ color: "black", cursor: "pointer" }} />
+              <SearchIcon sx={{ color: contxtobj.txts, cursor: "pointer" }} />
             </SearchIconWrapper>
             <StyledInputBase
-              sx={{ color: "black" }}
+              sx={{ color: contxtobj.txts }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
-              //   onKeyUp={search_products}
+              onKeyUp={search_products}
+              autoFocus
             />
           </Search>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Tooltip title="Home">
             <IconButton
               size="large"
               aria-label=" new notifications"
               color="inherit"
             >
               <Link className="link" to="/">
-                <img style={{ width: "50px" }} alt="" src="home.gif" />
+                <HomeIcon sx={{ color: "#FBB03B" }} />
               </Link>
             </IconButton>
+          </Tooltip>
+          <Tooltip title='Cart'>
             <IconButton
               size="large"
               aria-label="new notifications"
               color="inherit"
             >
-              <Badge badgeContent="21" color="error">
+              <Badge badgeContent={props.cartcount} color="error">
                 <Link className="link" to="/cart">
-                  {/* <ShoppingCartIcon sx={{ color: "green" }} /> */}
-                  <img style={{ width: "50px" }} alt="" src="feeds.gif" />
+                  <ShoppingCartIcon sx={{ color: "#FBB03B" }} />
                 </Link>
               </Badge>
-            </IconButton>
+            </IconButton></Tooltip>
+            {contxtobj.login === '' ?
+            <Tooltip title="Login">
             <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={loginbtn}
               color="inherit"
             >
-              <img style={{ width: "50px" }} alt="" src="profile.gif" />
+              <PersonOutlineIcon sx={{color:"#FBB03B"}}/>
+            
             </IconButton>
+            </Tooltip>
+            :
+            <Tooltip title="Logout">
+              <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={logoutbtn}
+              color="inherit"
+            >
+              <LogoutIcon sx={{color:"#FBB03B"}} />
+            </IconButton>
+            </Tooltip>
+            }
+           <Tooltip title="Theme Mode">
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              
+              color="inherit"
+            >
+              <Switch onChange={changemode}  color="warning" />
+            </IconButton></Tooltip>
+            
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

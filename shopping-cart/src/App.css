@@ -1,0 +1,418 @@
+
+
+.App {
+  text-align: center;
+}
+.contactushead{
+  margin: 50px 0px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.logofinal{
+  font-weight: 1000;
+  font-family: 'Satisfy', cursive;
+  border-radius: 5px;
+  padding: 1.2vw;
+  font-size: 2.2vw;
+  background-color: #FBB03B;
+  margin: 10px;
+}
+
+.nav{
+  background-color: white;
+  margin: 0px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 5rem;
+  color: white;
+  /* position: fixed;
+  width: 100%; */
+}
+
+.nav ul{
+  display: flex;
+  font-size: 15px;
+  list-style: none;
+  gap: 2rem;
+}
+.nav li{
+  cursor: pointer;
+  color: black;
+}
+.nav li:hover{
+  cursor: pointer;
+  color: #FBB03B;
+}
+
+
+.nav .link{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav .link:hover{
+  cursor: pointer;
+  color: #FBB03B;
+}
+.nav .link.active{
+  cursor: pointer;
+  color: gray;
+}
+.logomain{
+  width: 30px;
+}
+.logoname{
+  color: black;
+}
+.advertisment{
+  /* padding-top:100px ; */
+  text-align: start;
+  height: 80vh; 
+  background-image: url("https://technext.github.io/famms/images/slider-bg.jpg");
+  background-size: cover;
+}
+.offername{
+  padding: 9rem 3rem;
+}
+.offername p:first-child{
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername p{
+  color: #FBB03B;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername div{
+  text-align: justify;
+  width: 30%;
+  color: grey;
+  font-size: .8rem;
+  margin: 0rem 100px;
+}
+.offername button{
+  background-color: #FBB03B;
+  color: white;
+  padding: 5px 20px;
+  /* cursor: pointer; */
+  margin: 2rem 100px;
+}
+
+.allcards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.whyshopwithus p{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+.cards{
+  padding: 50px 0px;
+  width: 170px;
+  background-color: #9D9EA3;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 15px;
+}
+.cards img{
+
+  width: 70px;
+  padding: 10px 0px;
+}
+.cards p{
+  color: #000000;
+  margin: 0px 10px;
+  font-size: 22px;
+}
+.cards span{
+  color: white;
+  margin: 0px 15px;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.advertisment2{
+  
+  margin: 50px 0px;
+  text-align: start;
+  height: 80vh; 
+  background-image: url("https://technext.github.io/famms/images/arrival-bg.png");
+  background-size: cover;
+}
+.offername2{
+  padding: 9rem 3rem;
+  text-align: end;
+}
+.offername2 p:first-child{
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+.offername2 p{
+  color: #FBB03B;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 100px;
+}
+
+.offername2 button{
+  background-color: #FBB03B;
+  color: white;
+  padding: 5px 20px;
+  /* cursor: pointer; */
+  margin: 2rem 100px;
+}
+
+.ourproducts{
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin: 0rem 50px;
+}
+.headourpro span:first-child{
+  color: #FBB03B;
+}
+.allcardsofproducts{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.productcard{
+  position: relative;
+  border: 1px solid white;
+  width: 250px;
+  height: 500px;
+  text-align: center;
+  align-items: center;
+  margin: 20px 10px;
+
+}
+.productcard:hover{
+  border: 1px solid gray;
+  width: 250px;
+  align-items: center;
+  margin: 20px 10px;
+
+}
+.productname{
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+
+}
+.productprice{
+  margin-top: -10px;
+  margin-left: 30px;
+  font-size: 22px;
+  font-weight: 100;
+  text-align: left;
+}
+.productpricecancle{
+  margin-left: 9px;
+  margin-top: -5px;
+  text-decoration: line-through;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: left;
+}
+
+.productcard img{
+  /* height: 150px; */
+  width: 100%;
+}
+.pricename{
+  display: flex;
+  justify-content: start;
+  font-size: 17px;
+  font-weight: 400;
+}
+.addtocartbtn{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  border: 1px solid gray;
+  padding: 5px 0px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.addtocartbtn:hover{
+  /* color: red;
+  background-color: black; */
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.carttablediv{
+  margin: 0px 20vw;
+}
+.carttable tr{
+  border-bottom: 2px solid black;
+}
+.carttable th{
+  width: 20%;
+}
+.proceedtocheckout{
+  border-radius:5px ;
+  color: white;
+  border: 2px solid #FBB03B;
+  background-color: #FBB03B;
+  padding: 5px 10px;
+  margin: 50px 0vw;
+  width: 55vw;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.proceedtocheckout:hover{
+  border-radius:5px ;
+  color: #FBB03B;
+  border: 2px solid #FBB03B;
+  background-color: white;
+  padding: 5px 10px;
+  margin: 50px 0vw;
+  width: 55vw;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.carttable{
+  margin: 0px 0px;
+}
+.footer{
+
+
+  color: aliceblue;
+  background-color: #FBB03B;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.footer span{
+  font-size: 10px;
+}
+.footer h4{
+  font-size: 10px;
+}
+
+.deleteit{
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #FBB03B;
+}
+.deleteit:hover{
+  background-color: #fb613b;
+  color:white;
+  cursor: pointer;
+}
+.maincartpage{
+  margin-top: 100px;
+  
+}
+.cartitemblock{
+  margin: 20px 0px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px  gray;
+  width: 100%;
+  display: flex;
+  text-align: left;
+}
+.cartimg{
+  margin: 10px;
+  width:100px;
+}
+.quantity{
+  display: flex;
+  text-align: left;
+}
+.cartcontent{
+  margin-top: 25px;
+  margin-left: 30px;
+}
+
+.logindiv{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-bottom: 6vw;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px orange;
+}
+.inpfield{
+  outline: #FBB03B;
+  border: 2px solid  #FBB03B;
+  padding-right: 3vw;
+  padding-left: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 20px;
+  border-radius: 6px;
+  margin: 15px;
+}
+.loginbtn{
+  background-color: #FBB03B;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 8px 25px;
+  cursor: pointer;
+}
+
+.loginbtn:hover{
+  background-color: #e39516;
+}
+.loginhead{
+  font-size: 25px;
+  color:  black;
+  
+}
+.loginbox{
+  /* background-color: #FBB03B; */
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noaccount{
+  cursor: pointer;
+  color: blue;
+}
+.noaccount:hover{
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(16, 16, 124);
+  text-underline-offset: revert-layer;
+}
