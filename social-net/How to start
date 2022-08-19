@@ -1,0 +1,8 @@
+first you have to go that folder 
+type cd api 
+then type npm i json-server
+then type npm start
+then server will start
+then go to social-network-app folder
+then type npm install
+then npm start
