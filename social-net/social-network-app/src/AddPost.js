@@ -1,17 +1,20 @@
 import { Button, IconButton, TextField, Tooltip } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import './App.css';
 import SendIcon from "@mui/icons-material/Send";
 import "./Home.css";
 import { v4 as uid } from "uuid";
 import apicall from "./db.js";
 import { contextname } from "./Context";
 import ImageIcon from "@mui/icons-material/Image";
+import { useNavigate } from "react-router-dom";
 const AddPost = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = React.useState("");
   const [textcontent, setTextContent] = React.useState("");
   const contxt = React.useContext(contextname);
   const [image, setImage] = React.useState("");
-
+  
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -29,7 +32,7 @@ const AddPost = () => {
       } 
       
       else {
-        console.log(image);
+    
         let a = 
         {
           id: uid(),
@@ -38,11 +41,12 @@ const AddPost = () => {
           contentimg: image,
           content: textcontent,
         };
+        navigate('/home');
         try
         {
-          apicall.post("/posts", a);
-          await apicall.get("/posts");
-          // contxt.setPosts(allposts.data);
+          await apicall.post("/posts", a);
+          let allposts = await apicall.get("/posts");
+          contxt.setPosts(allposts.data)
         } 
         catch (e) 
         {
@@ -70,10 +74,13 @@ const AddPost = () => {
         }}
       />
       
-
-      <div>
+        {image !== '' && <div>
+          <img style={{height:"100px",width:"100px"}} alt="" src={image}/>
+        </div>}
+      <div class="tooltip">
+      <span class="tooltiptext">Upload image here</span>
         <label htmlFor="file-input">
-        <i class="fa-solid fa-circle-arrow-up"></i>
+        <i style={{fontSize:"50px",cursor:"pointer"}} class="fa-regular fa-image"></i>
         </label>
         <input
           id="file-input"
@@ -83,10 +90,10 @@ const AddPost = () => {
         />
       </div>
       <Button
-        sx={{ margin: "2% 0%", backgroundColor: "purple", float: "left" }}
+        sx={{ margin: "2% 0%", backgroundColor: "#039BE5", float: "left" }}
         onClick={addpost}
         variant="contained"
-        endIcon={<SendIcon />}
+        endIcon={<SendIcon  />}
       >
         Post
       </Button>

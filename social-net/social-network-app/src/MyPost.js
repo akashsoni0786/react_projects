@@ -8,13 +8,14 @@ const MyPost = () => {
     return (
       contxt.login && 
         <div className="homepage">
-          {contxt.posts.map((i) => {
-            console.log(contxt.login);
+          {contxt.posts == null ? <h1 >You have not posted yet.</h1> :
+          contxt.posts.map((i) => {
             if(i.author === contxt.login){
                 return <MyPostbox ids={i.id} username={i.author} text={i.content} pic={i.contentimg} />
             }
           }
           )}
+         
         </div>
       );
 }

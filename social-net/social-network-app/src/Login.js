@@ -15,18 +15,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { contextname } from './Context';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Copyright(props) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://facebook.com/">
-        Firebook 
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
 
 const theme = createTheme();
 
@@ -53,7 +41,6 @@ export default function SignIn() {
         {
             contxt.setLogin(i.name);
             contxt.setLoginid(i.id);
-            console.log(i.name);
             done =1;
             navigate('/home');
         }
@@ -79,7 +66,7 @@ export default function SignIn() {
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             {/* <LockOutlinedIcon /> */}
-            <img style={{width:"60px"}} alt='' src='https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg'/>
+            <img style={{width:"60px"}} alt='' src='telegram.png'/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -130,7 +117,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        
       </Container>
     </ThemeProvider>
   );

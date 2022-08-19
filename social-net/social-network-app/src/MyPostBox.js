@@ -37,6 +37,7 @@ const MyPostbox = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const contxt = React.useContext(contextname);
   const [catchid, setCatchid] = React.useState("");
+  const [rmvtxt, setRmvtxt] = React.useState("");
   const [openmodal, setOpenModal] = React.useState(false);
   const [image, setImage] = React.useState("");
   const [commenttxt, setCommenttxt] = React.useState("");
@@ -46,7 +47,6 @@ const MyPostbox = (props) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setImage(URL.createObjectURL(img));
-      console.log(image);
     }
   };
   const updatepost = async () => {
@@ -56,7 +56,7 @@ const MyPostbox = (props) => {
       if (textcontent === "" && image === "") {
         alert("Field is empty");
       } else {
-        console.log(image);
+     
         let a = {
           title: title,
           author: contxt.login,
@@ -64,12 +64,12 @@ const MyPostbox = (props) => {
           content: textcontent,
         };
 
-        console.log(a);
+   
         try {
-          apicall.put(`/posts/${catchid}`, a);
+          await apicall.put(`/posts/${catchid}`, a);
           let allposts = await apicall.get("/posts");
           contxt.setPosts(allposts.data);
-          console.log(allposts.data);
+      
         } catch (e) {
           console.log(e);
         }
@@ -87,7 +87,7 @@ const MyPostbox = (props) => {
     setCatchid(event.target.id);
     setAnchorEl(event.currentTarget);
     let thisposts = await apicall.get(`/posts/${event.target.id}`);
-    console.log(thisposts.data);
+
     setTitle(thisposts.data.title);
     setTextContent(thisposts.data.content);
     setImage(thisposts.data.contentimg);
@@ -107,21 +107,27 @@ const MyPostbox = (props) => {
     }
   };
   const commentit = async (e) => {
+    if(rmvtxt !== ''){
+    setRmvtxt('')
     let a = {
       commentid: uid(),
       uid: contxt.loginid,
       usrname: contxt.login,
-      postid: e.target.id,
+      postid: props.ids,
       username: contxt.login,
       commentarea: commenttxt,
     };
     try {
-      apicall.post("/comments", a);
+      await apicall.post("/comments", a);
       let allcomm = await apicall.get("/comments");
-      console.log(allcomm.data);
+      await contxt.setComments(allcomm.data);
     } catch (e) {
       alert(e);
     }
+  }
+  else{
+    alert("Field is empty");
+  }
   };
   const post_pic_style = {
     textDecoration: "none",
@@ -247,12 +253,15 @@ const MyPostbox = (props) => {
             checkedIcon={<FavoriteIcon sx={{ color: "red" }} />}
           />
           <InputBase
+          id={props.ids}
             sx={{ ml: 1, flex: 1 }}
             placeholder="Comment...."
             inputProps={{ "aria-label": "Comment...." }}
             onChange={(e) => {
               setCommenttxt(e.target.value);
+              setRmvtxt(e.target.value)
             }}
+            value={rmvtxt}
           />
           <SendOutlinedIcon
             id={props.ids}

@@ -13,14 +13,14 @@ const Postbox = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const contxt = React.useContext(contextname);
   const [commenttxt, setCommenttxt] = React.useState("");
-
+  const [rmvtxt, setRmvtxt] = React.useState("");
   const shareit = async (e) => {
     let a;
     contxt.posts.map((i) => {
       if (i.id == e.target.id) {
         a = {
           id: uid(),
-          title: i.title + " with " + i.author,
+          title: i.title + " of " + i.author,
           author: contxt.login,
           contentimg: i.contentimg,
           content: i.content,
@@ -31,7 +31,6 @@ const Postbox = (props) => {
       apicall.post("/posts", a);
       let allposts = await apicall.get("/posts");
       contxt.setPosts(allposts.data);
-      console.log(allposts.data);
       alert("This post has been shared successfully");
     } catch (e) {
       console.log(e);
@@ -56,10 +55,10 @@ const Postbox = (props) => {
         postid: props.pid,
         liked: true,
       };
-      console.log("b");
+  
       try {
-        apicall.post("/likes", b);
-        let l = apicall.get("/likes");
+        await apicall.post("/likes", b);
+        let l =await apicall.get("/likes");
         contxt.setLikes(l);
       } catch (e) {
         console.log(e);
@@ -67,7 +66,7 @@ const Postbox = (props) => {
     } else {
       try {
         await apicall.delete(`/likes/${id_like}`);
-        let l = apicall.get("/likes");
+        let l = await apicall.get("/likes");
         contxt.setLikes(l);
       } catch (e) {
         console.log(e);
@@ -75,21 +74,27 @@ const Postbox = (props) => {
     }
   };
   const commentit = async (e) => {
-    console.log(e.target.id);
+
+    if(rmvtxt !== ''){
+      setRmvtxt('')
     let a = {
       commentid: uid(),
       uid: contxt.loginid,
       usrname: contxt.login,
-      postid: e.target.id,
+      postid: props.pid,
       username: contxt.login,
       commentarea: commenttxt,
     };
     try {
-      apicall.post("/comments", a);
+      await apicall.post("/comments", a);
       let allcomm = await apicall.get("/comments");
-      console.log(allcomm.data);
+      await contxt.setComments(allcomm.data);
     } catch (e) {
       alert(e);
+    }
+    }
+    else{
+      alert("Field is empty!")
     }
   };
   return (
@@ -146,15 +151,18 @@ const Postbox = (props) => {
               checkedIcon={<FavoriteIcon sx={{ color: "red" }} />}
             /> 
         <InputBase
+        id="commentarea"
             sx={{ ml: 1, flex: 1 }}
             placeholder="Comment...."
             inputProps={{ "aria-label": "Comment...." }}
             onChange={(e) => {
               setCommenttxt(e.target.value);
+              setRmvtxt(e.target.value)
             }}
+            value={rmvtxt}
           />
           <SendOutlinedIcon
-            id={props.pid}
+            // id={props.pid}
             onClick={commentit}
             sx={{ margin: "5px 5px", cursor: "pointer" }}
           />

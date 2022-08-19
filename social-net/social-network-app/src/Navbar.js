@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -17,12 +16,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
 import { contextname } from "./Context";
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { Tooltip } from "@mui/material";
-import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
-import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
-import ExtensionIcon from '@mui/icons-material/Extension';
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+import VideoCameraBackIcon from "@mui/icons-material/VideoCameraBack";
+import DataSaverOnIcon from "@mui/icons-material/DataSaverOn";
+import ExtensionIcon from "@mui/icons-material/Extension";
+import OtherHousesIcon from "@mui/icons-material/OtherHouses";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -160,23 +159,23 @@ export default function PrimarySearchAppBar(props) {
           aria-haspopup="true"
           color="inherit"
         >
-           <DataSaverOnIcon />
+          <DataSaverOnIcon />
         </IconButton>
         <p>Add posts</p>
       </MenuItem>
     </Menu>
   );
-//   const search_products = (e) => {
-//     navigate("/searched");
-//     var searchtext = e.target.value;
-//     products.map((i) => {
-//       if (i.name.includes(searchtext)) {
-//         search_val = [...search_val, i];
-//         console.log(search_val)
-//         contxtobj.setSearch(search_val);
-//       }
-//     });
-//   };
+  //   const search_products = (e) => {
+  //     navigate("/searched");
+  //     var searchtext = e.target.value;
+  //     products.map((i) => {
+  //       if (i.name.includes(searchtext)) {
+  //         search_val = [...search_val, i];
+  //         console.log(search_val)
+  //         contxtobj.setSearch(search_val);
+  //       }
+  //     });
+  //   };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -190,10 +189,19 @@ export default function PrimarySearchAppBar(props) {
         }}
       >
         <Toolbar>
-        <Link className="link" to="/home">
-        <img style={{width:"60px"}} alt='' src='https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg'/>
+          <Link className="link" to="/home">
+            <img style={{ width: "60px" }} alt="" src="telegram.png" />
           </Link>
-          <Search>
+          <p
+            style={{
+              color: "#039BE5",
+              fontFamily: "'Satisfy', cursive",
+              fontSize: "30px",
+            }}
+          >
+            Miligram
+          </p>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon sx={{ color: "black", cursor: "pointer" }} />
             </SearchIconWrapper>
@@ -203,8 +211,7 @@ export default function PrimarySearchAppBar(props) {
               inputProps={{ "aria-label": "search" }}
             //   onKeyUp={search_products}
             />
-          </Search>
-
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           {/* <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <Tooltip title="Attact your post">

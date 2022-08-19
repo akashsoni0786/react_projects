@@ -5,6 +5,8 @@ import {
   Divider,
   IconButton,
   InputBase,
+  Menu,
+  MenuItem,
   Modal,
   Tooltip,
   Typography,
@@ -22,6 +24,8 @@ import { useLocation } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/system";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 const SinglePost = (props) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const contxt = React.useContext(contextname);
@@ -30,12 +34,12 @@ const SinglePost = (props) => {
   const location = useLocation();
   const [commentedited, setEditedComment] = useState("");
   const [commenttxt, setCommenttxt] = React.useState("");
-
   const { details } = location.state;
-  console.log(details);
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [open, setOpen] = React.useState(false);
+  const [rmvtxt, setRmvtxt] = React.useState("");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+ 
   React.useEffect(() => {
     contxt.posts.map((i) => {
       if (i.id == details) {
@@ -43,6 +47,12 @@ const SinglePost = (props) => {
       }
     });
   }, [details]);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+   
+  }, []);
+ 
 
   const shareit = async (e) => {
     let a;
@@ -61,14 +71,13 @@ const SinglePost = (props) => {
       apicall.post("/posts", a);
       let allposts = await apicall.get("/posts");
       contxt.setPosts(allposts.data);
-      console.log(allposts.data);
       alert("This post has been shared successfully");
     } catch (e) {
       console.log(e);
     }
   };
   const already = () => {
-    alert("This is your post!");
+    alert("This post is shared already!");
   };
   const editComment = (e) => {
     contxt.comments.map(async (i) => {
@@ -81,12 +90,11 @@ const SinglePost = (props) => {
           postid: i.postid,
           commentarea: commentedited,
         };
-        console.log(a);
+    
         try {
-          apicall.put(`/comments/${i.id}`, a);
-          let allcomments = await apicall.get("/comments");
-          contxt.setComments(allcomments.data);
-          console.log(allcomments.data);
+          await apicall.put(`/comments/${i.id}`, a);
+          let allcomm = await apicall.get("/comments");
+          contxt.setComments(allcomm.data)
         } catch (e) {
           console.log(e);
         }
@@ -100,7 +108,6 @@ const SinglePost = (props) => {
       await apicall.delete(`/comments/${e.target.id}`);
       let allposts = await apicall.get("/comments");
       contxt.setComments(allposts.data);
-      alert("Deleted successfully");
     } catch (e) {
       console.log(e);
     }
@@ -116,31 +123,35 @@ const SinglePost = (props) => {
     p: 4,
   };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const openforedit = (e) => {
     handleOpen();
     setCommid(e.target.id);
   };
   const commentit = async (e) => {
+    if(rmvtxt !== ''){
+    setRmvtxt('')
     let a = {
       commentid: uid(),
       uid: contxt.loginid,
       usrname: contxt.login,
-      postid: e.target.id,
+      postid: post_details.id,
       username: contxt.login,
       commentarea: commenttxt,
     };
     try {
-      apicall.post("/comments", a);
+      await apicall.post("/comments", a);
       let allcomm = await apicall.get("/comments");
-      console.log(allcomm.data);
+      contxt.setComments(allcomm.data);
     } catch (e) {
       alert(e);
     }
+  }
+  else{
+    alert("Field is empty");
+  }
   };
+
+  
   return (
     <>
       <div>
@@ -161,6 +172,7 @@ const SinglePost = (props) => {
                 onChange={(e) => {
                   setEditedComment(e.target.value);
                 }}
+               
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Comment...."
                 inputProps={{ "aria-label": "Comment...." }}
@@ -190,7 +202,7 @@ const SinglePost = (props) => {
               <p className="post_username">{post_details.author}</p>
               <span> shared {post_details.title}</span>
             </div>
-            {post_details.username === contxt.login ? (
+            {post_details.author === contxt.login ? (
               <ShareOutlinedIcon
                 onClick={already}
                 id={post_details.id}
@@ -217,24 +229,24 @@ const SinglePost = (props) => {
               checkedIcon={<FavoriteIcon sx={{ color: "red" }} />}
             />
             <InputBase
+            id="commentarea"
               sx={{ ml: 1, flex: 1 }}
               placeholder="Comment...."
               inputProps={{ "aria-label": "Comment...." }}
               onChange={(e) => {
                 setCommenttxt(e.target.value);
+                setRmvtxt(e.target.value)
               }}
+              value={rmvtxt}
             />
             <SendOutlinedIcon
-              id={props.ids}
+              
               onClick={commentit}
               sx={{ margin: "5px 5px", cursor: "pointer" }}
             />
           </div>
         </div>
-
         {contxt.comments.map((i) => {
-          console.log("####: " + i.postid + "===" + post_details.id);
-
           if (post_details.id == i.postid) {
             return (
               <div className="postbox">

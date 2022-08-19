@@ -42,7 +42,6 @@ export default function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data.get("cpassword"));
     if (
       data.get("name") === "" ||
       data.get("email") === "" ||
@@ -57,8 +56,6 @@ export default function Signup() {
           mail: data.get("email"),
           pass: data.get("password"),
         };
-        // contxt.setUsers([...contxt.users,a])
-        console.log(a);
         try {
           apicall.post("/users", a);
         } catch (e) {
@@ -69,7 +66,7 @@ export default function Signup() {
       }
     }
 
-    console.log(contxt.users);
+
   };
 
   return (
@@ -88,7 +85,7 @@ export default function Signup() {
             <img
               style={{ width: "60px" }}
               alt=""
-              src="https://i.pinimg.com/736x/82/66/af/8266afd59e5dbcd0f732de33b3235c71.jpg"
+              src="telegram.png"
             />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -155,7 +152,7 @@ export default function Signup() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        
       </Container>
     </ThemeProvider>
   );
