@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { contextname } from "./Context";
 import { v4 as uid } from "uuid";
 import apicall from "./db.js";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 function Copyright(props) {
   return (
     <Typography
@@ -37,9 +37,11 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Signup() {
+  const navigate = useNavigate();
   const contxt = React.useContext(contextname);
 
   const handleSubmit = (event) => {
+    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if (
@@ -57,7 +59,9 @@ export default function Signup() {
           pass: data.get("password"),
         };
         try {
-          apicall.post("/users", a);
+          await apicall.post("/users", a);
+          alert("Signned up successfully");
+          navigate('/');
         } catch (e) {
           console.log(e);
         }
